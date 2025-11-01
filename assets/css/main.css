@@ -1,0 +1,728 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* con esto hago que se vea todo el contenido*/
+  overflow-x: hidden;
+}
+
+/* Stylos de la presentación */
+
+.presentacion {
+  position: relative; /* Le tuve que poner esto sino me oscurecia tambien el header */
+  background-image: url("../img/presentacion.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 400px;
+  color: white;
+  z-index: 1;
+}
+
+.presentacion::before {
+  /* Capa oscura encima de la imagen */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1; /* El header tiene index 0, sino me lo oscurecia también */
+}
+
+/* Aseguramos que el texto esté por encima del overlay */
+.presentacion h1,
+.presentacion p,
+.presentacion h5 {
+  position: relative;
+  z-index: 2;
+}
+
+.presentacion h1 {
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+  font-size: 25px;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.presentacion p {
+  text-align: justify;
+  font-size: 15px;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  padding: 0px 20px;
+}
+
+.presentacion h5 {
+  text-align: center;
+  font-size: 11px;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  padding-top: 50px;
+}
+
+.presentacion h5:active {
+  /* animacion del "ver a los profesionales */
+  animation: clickAnim 0.3s forwards;
+}
+
+@keyframes clickAnim {
+  0% {
+    transform: scale(0.3);
+  }
+  30% {
+    transform: scale(0.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Stylos de las tarjetas */
+
+.divTarjetas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(206, 206, 206);
+}
+
+.tarjeta {
+  background-color: white;
+  border-radius: 3%;
+  width: 80%;
+  margin-top: 20px;
+  box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tarjeta:last-of-type {
+  margin-bottom: 30px;
+}
+
+.cabeceraSeccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cabeceraSeccion .iconoServiciosVeterinarios {
+  margin-top: 10px;
+}
+
+.cabeceraSeccion h2 {
+  font-size: 15px;
+  color: rgb(72, 72, 219);
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.serviciosUsuario {
+  display: flex;
+  flex-direction: column;
+}
+
+.serviciosUsuario div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.serviciosUsuario div:last-of-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.serviciosUsuario div h3 {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  color: rgb(21, 21, 21);
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.estamosEn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.estamosEn h5 {
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.mapa {
+  width: 80%;
+  height: 250px; /* puedes ajustar el alto */
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+  box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.3);
+}
+
+.mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.estamosEn,
+.telefonoDireccion {
+  width: 100%;
+}
+
+.telefonoDireccion {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.telefonoDireccion h5 {
+  font-size: 12px;
+  margin: 0;
+  padding: 5px;
+}
+
+.seccionTienda {
+  width: 100%;
+}
+
+.tienda {
+  display: flex;
+  flex-direction: column;
+}
+
+.tienda div {
+  display: flex;
+  flex-direction: row;
+}
+
+.tienda div:last-of-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.tienda div h5 {
+  padding: 5px;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.adopta {
+  padding-bottom: 20px;
+}
+
+/* slider de imagenes */
+
+.slideshow-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.3);
+}
+
+.slideshow-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slideshow-container img.active {
+  opacity: 1;
+}
+
+/* main tablet */
+@media (min-width: 768px) {
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* con esto hago que se vea todo el contenido*/
+    overflow-x: hidden;
+  }
+
+  /* Stylos de la presentación */
+
+  .presentacion {
+    position: relative; /* Le tuve que poner esto sino me oscurecia tambien el header */
+    background-image: url("../img/presentacion.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 400px;
+    color: white;
+    z-index: 1;
+  }
+
+  .presentacion::before {
+    /* Capa oscura encima de la imagen */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* El header tiene index 0, sino me lo oscurecia también */
+  }
+
+  /* Aseguramos que el texto esté por encima del overlay */
+  .presentacion h1,
+  .presentacion p,
+  .presentacion h5 {
+    position: relative;
+    z-index: 2;
+  }
+
+  .presentacion h1 {
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+    font-size: 25px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .presentacion p {
+    text-align: justify;
+    font-size: 15px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    padding: 0px 20px;
+  }
+
+  .presentacion h5 {
+    text-align: center;
+    font-size: 11px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    padding-top: 50px;
+  }
+
+  .presentacion h5:active {
+    /* animacion del "ver a los profesionales */
+    animation: clickAnim 0.3s forwards;
+  }
+
+  @keyframes clickAnim {
+    0% {
+      transform: scale(0.3);
+    }
+    30% {
+      transform: scale(0.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Stylos de las tarjetas */
+
+  .divTarjetas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(206, 206, 206);
+  }
+
+  .tarjeta {
+    background-color: white;
+    border-radius: 3%;
+    width: 80%;
+    margin-top: 20px;
+    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarjeta:last-of-type {
+    margin-bottom: 30px;
+  }
+
+  .cabeceraSeccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cabeceraSeccion .iconoServiciosVeterinarios {
+    margin-top: 10px;
+  }
+
+  .cabeceraSeccion h2 {
+    font-size: 15px;
+    color: rgb(72, 72, 219);
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .serviciosUsuario {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .serviciosUsuario div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .serviciosUsuario div:last-of-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .serviciosUsuario div h3 {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    color: rgb(21, 21, 21);
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .estamosEn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .estamosEn h5 {
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .mapa {
+    width: 80%;
+    height: 250px; /* puedes ajustar el alto */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.3);
+  }
+
+  .mapa iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .estamosEn,
+  .telefonoDireccion {
+    width: 100%;
+  }
+
+  .telefonoDireccion {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .telefonoDireccion h5 {
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+  }
+
+  .seccionTienda {
+    width: 100%;
+  }
+
+  .tienda {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tienda div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tienda div:last-of-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .tienda div h5 {
+    padding: 5px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .adopta {
+    padding-bottom: 20px;
+  }
+
+  /* slider de imagenes */
+
+  .slideshow-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.3);
+  }
+
+  .slideshow-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slideshow-container img.active {
+    opacity: 1;
+  }
+}
+
+/* main escritorio */
+@media (min-width: 1024px) {
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* con esto hago que se vea todo el contenido*/
+    overflow-x: hidden;
+  }
+
+  /* Stylos de la presentación */
+
+  .presentacion {
+    position: relative; /* Le tuve que poner esto sino me oscurecia tambien el header */
+    background-image: url("../img/presentacion.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 400px;
+    color: white;
+    z-index: 1;
+  }
+
+  .presentacion::before {
+    /* Capa oscura encima de la imagen */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* El header tiene index 0, sino me lo oscurecia también */
+  }
+
+  /* Aseguramos que el texto esté por encima del overlay */
+  .presentacion h1,
+  .presentacion p,
+  .presentacion h5 {
+    position: relative;
+    z-index: 2;
+  }
+
+  .presentacion h1 {
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+    font-size: 25px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .presentacion p {
+    text-align: justify;
+    font-size: 15px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    padding: 0px 20px;
+  }
+
+  .presentacion h5 {
+    text-align: center;
+    font-size: 11px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    padding-top: 50px;
+  }
+
+  .presentacion h5:active {
+    /* animacion del "ver a los profesionales */
+    animation: clickAnim 0.3s forwards;
+  }
+
+  @keyframes clickAnim {
+    0% {
+      transform: scale(0.3);
+    }
+    30% {
+      transform: scale(0.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Stylos de las tarjetas */
+
+  .divTarjetas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(206, 206, 206);
+  }
+
+  .tarjeta {
+    background-color: white;
+    border-radius: 3%;
+    width: 80%;
+    margin-top: 20px;
+    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarjeta:last-of-type {
+    margin-bottom: 30px;
+  }
+
+  .cabeceraSeccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cabeceraSeccion .iconoServiciosVeterinarios {
+    margin-top: 10px;
+  }
+
+  .cabeceraSeccion h2 {
+    font-size: 15px;
+    color: rgb(72, 72, 219);
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .serviciosUsuario {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .serviciosUsuario div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .serviciosUsuario div:last-of-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .serviciosUsuario div h3 {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    color: rgb(21, 21, 21);
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .estamosEn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .estamosEn h5 {
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .mapa {
+    width: 80%;
+    height: 250px; /* puedes ajustar el alto */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.3);
+  }
+
+  .mapa iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .estamosEn,
+  .telefonoDireccion {
+    width: 100%;
+  }
+
+  .telefonoDireccion {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .telefonoDireccion h5 {
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+  }
+
+  .seccionTienda {
+    width: 100%;
+  }
+
+  .tienda {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tienda div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tienda div:last-of-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .tienda div h5 {
+    padding: 5px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  .adopta {
+    padding-bottom: 20px;
+  }
+
+  /* slider de imagenes */
+
+  .slideshow-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.3);
+  }
+
+  .slideshow-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slideshow-container img.active {
+    opacity: 1;
+  }
+}
