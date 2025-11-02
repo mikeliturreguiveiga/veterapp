@@ -149,6 +149,12 @@ body {
   align-items: center;
 }
 
+.contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 .estamosEn h5 {
   text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
 }
@@ -291,7 +297,7 @@ body {
     text-align: justify;
     font-size: 15px;
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
-    padding: 0px 20px;
+    padding: 0px 30px;
   }
 
   .presentacion h5 {
@@ -535,7 +541,7 @@ body {
     text-align: justify;
     font-size: 22px;
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
-    padding: 0px 70px;
+    padding: 0px 100px;
   }
 
   .presentacion h5 {
@@ -636,9 +642,9 @@ body {
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   }
 
-  /* este último nuevo para ajustar el contacto y tienda*/
+  
 
-  .contactoYTienda {
+  .contactoYTienda {  /* este último nuevo para ajustar el contacto y tienda*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -716,8 +722,9 @@ body {
   }
 
   .tienda div h5 {
-    padding: 5px;
+    padding: 15px;
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    font-size: 20px;
   }
 
   .adopta {
@@ -728,8 +735,8 @@ body {
 
   .slideshow-container {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 600px;
+    height: 600px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.3);

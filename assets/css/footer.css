@@ -17,3 +17,19 @@ footer h5 {
     font-size: 7px;
     text-align: center;
 }
+
+@media (min-width: 768px) {
+
+    footer h5 {
+        font-size: 10px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    footer h5 {
+        font-size: 12px;
+    }
+
+}
