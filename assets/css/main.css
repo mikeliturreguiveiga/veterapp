@@ -527,20 +527,20 @@ body {
     margin: 0;
     padding: 30px;
     text-align: center;
-    font-size: 25px;
+    font-size: 35px;
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   }
 
   .presentacion p {
     text-align: justify;
-    font-size: 15px;
+    font-size: 22px;
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
-    padding: 0px 20px;
+    padding: 0px 70px;
   }
 
   .presentacion h5 {
     text-align: center;
-    font-size: 11px;
+    font-size: 14px;
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
     padding-top: 50px;
   }
@@ -562,6 +562,11 @@ body {
     }
   }
 
+  .presentacion h5:hover {
+    /* animacion del "ver a los profesionales */
+    cursor: pointer;
+  }
+
   /* Stylos de las tarjetas */
 
   .divTarjetas {
@@ -574,7 +579,7 @@ body {
 
   .tarjeta {
     background-color: white;
-    border-radius: 3%;
+    border-radius:1%;
     width: 80%;
     margin-top: 20px;
     box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
@@ -595,53 +600,71 @@ body {
   }
 
   .cabeceraSeccion .iconoServiciosVeterinarios {
-    margin-top: 10px;
+    margin-top: 18px;
   }
 
   .cabeceraSeccion h2 {
-    font-size: 15px;
+    font-size: 22px;
     color: rgb(72, 72, 219);
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   }
 
   .serviciosUsuario {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .serviciosUsuario div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
   .serviciosUsuario div:last-of-type {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
   }
 
   .serviciosUsuario div h3 {
     flex: 1;
     text-align: center;
-    font-size: 12px;
+    font-size: 22px;
     padding: 10px;
     color: rgb(21, 21, 21);
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  }
+
+  /* este último nuevo para ajustar el contacto y tienda*/
+
+  .contactoYTienda {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
   }
 
   .estamosEn {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 48%;
   }
 
-  .estamosEn h5 {
+  .contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contacto h5 {
+    text-align: center;
     text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   }
 
   .mapa {
-    width: 80%;
+    width: 100%;
     height: 250px; /* puedes ajustar el alto */
     border-radius: 10px;
     overflow: hidden;
@@ -655,9 +678,8 @@ body {
     border: none;
   }
 
-  .estamosEn,
   .telefonoDireccion {
-    width: 100%;
+    width: 80%;
   }
 
   .telefonoDireccion {
@@ -668,13 +690,13 @@ body {
   }
 
   .telefonoDireccion h5 {
-    font-size: 12px;
-    margin: 0;
-    padding: 5px;
+    font-size: 15px;
+    margin: 5px;
+    padding: 10px;
   }
 
   .seccionTienda {
-    width: 100%;
+    width: 48%;
   }
 
   .tienda {

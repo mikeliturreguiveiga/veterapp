@@ -59,7 +59,7 @@
                     <img src="../assets/img/contacto.svg" alt="">
                     <h2>CONTACTO</h2>
                 </div>
-                <div class="estamosEn">
+                <div class="contacto">
                     <h5>Estamos en:</h5>
                     <div class="mapa">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d724.0165686966081!2d-0.6828663722192383!3d37.977606558586736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1seu!2ses!4v1761506531103!5m2!1seu!2ses"
