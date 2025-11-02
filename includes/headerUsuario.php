@@ -16,7 +16,7 @@
             <img src="../assets/img/nombreClinica.jpg" alt="">
         </div>
         <img src="../assets/img/hamburguesa.svg" alt="hamburguesa" class="hamburguesa">
-        <menu class="navMenu">
+        <nav class="navMenu">
             <ul>
                 <li><a href="">ADOPTA</a></li>
                 <li><a href="">TIENDA</a></li>
@@ -24,7 +24,7 @@
                 <li><a href="">QUIENES SOMOS</a></li>
                 <li><a href="">ÁREA PERSONAL</a></li>
             </ul>
-        </menu>
+        </nav>
     </header>
     <script src="../assets/js/header.js"></script>
 </body>
