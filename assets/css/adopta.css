@@ -1,0 +1,28 @@
+.cabeceraAdopta {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.cabeceraAdopta .izquierda {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabeceraAdopta .izquierda h5:last-of-type{
+    padding-bottom: 25%;
+}
+
+.cabeceraAdopta .derecha {
+    width: 50%;
+}
+
+.cabeceraAdopta .derecha img {
+    width: 100%;
+    height: auto;
+}

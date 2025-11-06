@@ -13,16 +13,16 @@
     <header>
         <div class="izquierda">
             <img src="../assets/img/logoClinica.svg" alt="logoClinica" class="logoClinica" name="logoClinica"> <!-- icono de la clínica -->
-            <img src="../assets/img/nombreClinica.jpg" alt="">
+            <a href="../public/index.php"><img src="../assets/img/nombreClinica.jpg" alt=""></a>
         </div>
         <img src="../assets/img/hamburguesa.svg" alt="hamburguesa" class="hamburguesa">
         <nav class="navMenu">
             <ul>
-                <li><a href="">ADOPTA</a></li>
-                <li><a href="">TIENDA</a></li>
-                <li><a href="">SERVICIOS VETERINARIOS</a></li>
-                <li><a href="">QUIENES SOMOS</a></li>
-                <li><a href="">ÁREA PERSONAL</a></li>
+                <li><a href="../public/adopta.php">ADOPTA</a></li>
+                <li><a href="../public/tienda.php">TIENDA</a></li>
+                <li><a href="../public/serviciosVeterinarios.php">SERVICIOS VETERINARIOS</a></li>
+                <li><a href="../public/quienesSomos.php">QUIENES SOMOS</a></li>
+                <li><a href="../public/areaPersonal.php">ÁREA PERSONAL</a></li>
             </ul>
         </nav>
     </header>
