@@ -1,28 +1,140 @@
 .cabeceraAdopta {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100vh;
-}
-
-.cabeceraAdopta .izquierda {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.cabeceraAdopta .izquierda h5:last-of-type{
-    padding-bottom: 25%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: white;
 }
 
 .cabeceraAdopta .derecha {
-    width: 50%;
+  display: none;
+}
+
+.cabeceraAdopta .izquierda {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.cabeceraAdopta .izquierda h5:last-of-type {
+  padding-bottom: 5%;
+}
+
+.cabeceraAdopta .derecha {
+  width: 50%;
 }
 
 .cabeceraAdopta .derecha img {
+  width: 100%;
+  height: auto;
+}
+
+/* Desde aquí la galería */
+
+.divCajonGaleriaImagenes {
+  background-color: rgb(233, 233, 233);
+  padding: 20px;
+}
+
+.divCajonGaleriaImagenes .galeria {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.tarjetaAdopta {
+  background-color: white;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3 ease;
+}
+
+.tarjetaAdopta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tarjetaAdopta img {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+  padding-top: 30px;
+  border-radius: 3%;
+}
+
+.tarjetaAdopta .infoAnimal {
+  text-align: center;
+  padding: 15px 10px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Versión tablet */
+
+@media (min-width: 600px) {
+  .divCajonGaleriaImagenes .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Versión escritorio */
+
+@media (min-width: 900px) {
+
+  .divCajonGaleriaImagenes {
+    background-color: rgb(233, 233, 233);
+    padding: 50px;
+  }
+
+  .tarjetaAdopta {
+  background-color: white;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3 ease;
+}
+
+  .cabeceraAdopta {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+  }
+
+  .cabeceraAdopta .derecha {
+    display: block;
+  }
+
+  .cabeceraAdopta .izquierda {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cabeceraAdopta .izquierda h5:last-of-type {
+    padding-bottom: 5%;
+  }
+
+  .cabeceraAdopta .derecha {
+    width: 50%;
+  }
+
+  .cabeceraAdopta .derecha img {
     width: 100%;
     height: auto;
+  }
+  .divCajonGaleriaImagenes .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
