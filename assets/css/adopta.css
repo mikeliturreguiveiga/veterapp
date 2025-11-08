@@ -76,7 +76,7 @@
 
 /* Versión tablet */
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .divCajonGaleriaImagenes .galeria {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -84,7 +84,7 @@
 
 /* Versión escritorio */
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
 
   .divCajonGaleriaImagenes {
     background-color: rgb(233, 233, 233);
