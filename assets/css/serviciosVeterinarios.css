@@ -1,0 +1,60 @@
+.cuerpoServicios {
+  display: flex;
+  background-color: rgb(206, 206, 206);
+}
+
+.servicios {
+  width: 80%;
+  background-color: rgb(206, 206, 206);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.servicios .tarjeta {
+  background-color: white;
+  border-radius: 1%;
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicios .tarjeta:last-of-type {
+  margin-bottom: 30px;
+}
+
+.servicios .tarjeta h3 {
+  font-size: 22px;
+  color: rgb(72, 72, 219);
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.servicios .tarjeta p {
+  text-align: center;
+  padding: 15px;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+/* Versión tablet */
+
+@media (min-width: 768px) {
+  .servicios {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Versión escritorio*/
+
+@media (min-width: 1024px) {
+  .servicios {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

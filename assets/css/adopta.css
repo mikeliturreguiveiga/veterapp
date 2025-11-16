@@ -85,23 +85,22 @@
 /* Versión escritorio */
 
 @media (min-width: 1024px) {
-
   .divCajonGaleriaImagenes {
     background-color: rgb(233, 233, 233);
     padding: 50px;
   }
 
   .tarjetaAdopta {
-  background-color: white;
-  border-radius: 3%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3 ease;
-}
+    background-color: white;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3 ease;
+  }
 
   .cabeceraAdopta {
     display: flex;
