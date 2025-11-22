@@ -1,0 +1,129 @@
+body {
+    background-color: rgb(234, 234, 234);
+}
+
+
+.contenedorImagen img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.contenedorGeneralQuienesSomos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedorGeneralQuienesSomos h1 {
+  color: rgb(72, 72, 219);
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.contenedorGeneralQuienesSomos p {
+  text-align: justify;
+  width: 80%;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  font-size: 1em;
+}
+
+.contenedorGeneralQuienesSomos img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.contenedorTecnologiaDedicados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedorTecnologia,
+.contenedorEqupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedorTecnologiaDedicados h1 {
+  color: rgb(72, 72, 219);
+  text-align: center;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.contenedorTecnologiaDedicados p {
+  text-align: justify;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  font-size: 1em;
+  width: 80%;
+  align-items: center;
+}
+
+/* main tablet */
+
+@media (min-width: 768px) {
+  .contenedorGeneralQuienesSomos h1 {
+    color: rgb(72, 72, 219);
+    font-size: 1.7em;
+  }
+
+  .contenedorGeneralQuienesSomos p {
+    text-align: justify;
+    width: 80%;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    font-size: 1.4em;
+  }
+
+  .contenedorTecnologiaDedicados h1 {
+    color: rgb(72, 72, 219);
+    text-align: center;
+    font-size: 1.7em;
+  }
+
+  .contenedorTecnologiaDedicados p {
+    text-align: justify;
+    width: 80%;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    font-size: 1.4em;
+  }
+}
+
+/* main escritorio */
+
+@media (min-width: 1024px) {
+  .contenedorGeneralQuienesSomos h1 {
+    color: rgb(72, 72, 219);
+    font-size: 1.8em;
+  }
+
+  .contenedorGeneralQuienesSomos p {
+    text-align: justify;
+    width: 80%;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    font-size: 1.5em;
+  }
+
+  .contenedorTecnologiaDedicados {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .contenedorTecnologiaDedicados h1 {
+    color: rgb(72, 72, 219);
+    text-align: center;
+    font-size: 1.8em;
+  }
+
+  .contenedorTecnologiaDedicados p {
+    text-align: justify;
+    width: 80%;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    font-size: 1.5em;
+  }
+}
