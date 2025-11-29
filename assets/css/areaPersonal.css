@@ -80,14 +80,68 @@ form {
 }
 
 .botonInicioSesion {
-    all: unset;
-    box-sizing: border-box;
-    cursor: pointer;
-    font-weight: 500;
-    background-color: rgb(79, 79, 244);
-    color: white;
-    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
-    padding: 8px 15px;
-    border-radius: 8px;
-    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: rgb(79, 79, 244);
+  color: white;
+  box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+}
+
+.botonRegistrarme {
+  all: unset;
+  color: blue;
+  margin-top: 2em;
+}
+
+.botonRegistrarme:hover {
+  cursor: pointer;
+}
+
+.botonVolver {
+  all: unset;
+  color: blue;
+  margin-top: 2em;
+}
+
+.botonVolver:hover {
+  cursor: pointer;
+}
+
+/* Versión tablet */
+/* Lo dejo igual que movil */
+
+/* Versión escritorio */
+
+@media (min-width: 1024px) {
+  .contenedorAreaPersonal {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    justify-content: space-between;
+  }
+
+  .contenedorAreaPersonal .perroPortadaAreaPersonal {
+    /* Imagen en escritorio que se vea en toda la mitad iquierda */
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    display: flex;
+  }
+
+  .contenedorLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+ }
+
+ .contenedorLogoClinica {
+  width: 15%;
+ }
 }

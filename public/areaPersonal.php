@@ -26,8 +26,13 @@
                 </div>
                 <input class="botonInicioSesion" type="submit" value="Iniciar">
             </form>
+            <a href="../public/formularioRegistro.php" class="botonRegistrarme" name="registrarme" id="registrarme">Registrarme para coger cita</a>
+            <a href="../public/index.php" class="botonVolver" name="volver" id="volver">Volver a la web</a>
         </div>
     </div>
-</body>
 
+     <!--  Inlcuimos los archivos PHP -->
+    <?php include('../includes/conexion.php') ?>
+    <?php include('../includes/login.php') ?>
+</body>
 </html>
