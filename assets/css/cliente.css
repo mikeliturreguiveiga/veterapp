@@ -1,0 +1,174 @@
+.contenedorPantallaCompleta {
+    min-height: 100vh; /* con esto hago que se vea todo el contenido*/
+    background-color: rgb(216, 231, 253);
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+}
+
+.contenedorCabecera {
+    background-color: rgb(240, 240, 255);
+    margin: 1.5em;
+    padding: 0;
+    width: 80%;
+    border-radius: 3%;
+    box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+}
+.contenedorCabecera h1 {
+    color: rgb(44, 44, 207);
+    text-align: center;
+    border: 0;
+    padding: 1em;
+    margin: 0;
+}
+
+.contenedirCalendario {
+    background-color: rgb(44, 44, 207);
+    width: 60%;
+    border-radius: 3%;
+    padding: 0.8em;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+}
+
+.contenedorInformacion {
+    background-color: rgb(240, 240, 255);
+    margin: 1.5em;
+    padding: 0;
+    width: 80%;
+    border-radius: 3%;
+    box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+}
+
+.contenedorInformacionMascotas h2{
+    font-size: 1em;
+    text-align: center;
+    color: rgb(58, 58, 58);
+}
+
+.contenedorInformacionMascotas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botonAñadirMascota {
+    all:unset;
+    background-color: rgb(44, 44, 207);
+    color: rgb(224, 224, 224);
+    margin: 0.7em;
+    padding: 0.5em;
+    border-radius: 5%;
+    text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+form input {
+    border: none;
+    /* Añade solo el borde inferior */
+    border-bottom: 2px solid #979797; /* Puedes cambiar el grosor (2px) y el color (#333333) */
+    /* Ajusto el padding para que el texto no toque el borde */
+    /* (Opcional) Quita el fondo blanco por defecto */
+    background-color: transparent;
+    /* (Opcional) Quita el outline (el borde azul que aparece al hacer clic) */
+    outline: none;
+
+    margin: 0.5em;
+}
+form .contenedorBotonAñadir  {
+    display: flex;
+    justify-content: center;
+}
+
+
+form .contenedorBotonAñadir input {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: rgb(79, 79, 244);
+  color: white;
+  box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+  margin-top: 15px;
+  text-align: center;
+  width: 40%;
+}
+
+
+.tarjetaMascotas {
+    border-color: rgb(115, 183, 255);
+    border-width: 0.2em;
+    border-style: solid;
+    border-radius: 3%;
+    width: 80%;
+}
+
+.contenedorCitas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.proximasCitas, .citasAnteriores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.tarjeta {
+    border-color: rgb(115, 183, 255);
+    border-width: 0.2em;
+    border-style: solid;
+    border-radius: 3%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.diaHora {
+    background-color: rgb(44, 44, 207);
+    width: 60%;
+    border-radius: 3%;
+    padding: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+    width: 20%;
+    margin: 0.5em;
+    color: rgb(224, 224, 224);
+}
+
+.opciones {
+    margin: 0.3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.opciones input {
+    all:unset;
+    background-color: rgb(44, 44, 207);
+    color: rgb(224, 224, 224);
+    margin: 0.7em;
+    padding: 0.5em;
+    border-radius: 5%;
+    text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+}
