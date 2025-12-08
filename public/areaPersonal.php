@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <!--  Inlcuimos los archivos PHP -->
+    <?php include('../includes/conexion.php') ?>
+    <?php include('../includes/login.php') ?>
+
+    <!--  HTML -->
     <div class="contenedorAreaPersonal">
         <img class="perroPortadaAreaPersonal" src="../assets/img/areaPersonal/perroAreaPersonal.jpeg" alt="perro portada area personal">
         <div class="contenedorLogin">
@@ -30,9 +35,5 @@
             <a href="../public/index.php" class="botonVolver" name="volver" id="volver">Volver a la web</a>
         </div>
     </div>
-
-     <!--  Inlcuimos los archivos PHP -->
-    <?php include('../includes/conexion.php') ?>
-    <?php include('../includes/login.php') ?>
 </body>
 </html>

@@ -22,7 +22,7 @@
                 <li><a href="../public/tienda.php">TIENDA</a></li>
                 <li><a href="../public/serviciosVeterinarios.php">SERVICIOS VETERINARIOS</a></li>
                 <li><a href="../public/quienesSomos.php">QUIENES SOMOS</a></li>
-                <li><a href="../public/areaPersonal.php">CERRAR SESIÓN</a></li><!-- hacerlo funional TAREA PENDIENTE-->
+                <li><a href="../includes/logOut.php">CERRAR SESIÓN</a></li><!-- hacerlo funional TAREA PENDIENTE-->
             </ul>
         </nav>
     </header>

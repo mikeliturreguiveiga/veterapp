@@ -22,6 +22,7 @@
                     <input type="text" name="telefono" id="telefono" placeholder="Teléfono">
                     <input type="email" name="mail" id="mail" placeholder="Correo electrónico">
                     <input type="text" name="direccion" id="direccion" placeholder="Dirección">
+                    <input type="text" name="usuario" id="usuario" placeholder="Usuario">
                     <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
                     <div class="botonRegistarme">
                        <input type="submit" value="Registrarme" name="registrarme" id="registrarme" class="botonRegistrarme"> 
