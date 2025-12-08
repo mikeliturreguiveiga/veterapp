@@ -15,7 +15,11 @@
         <div class="contenedorCabecera">
             <h1>!Hola <?php //$_SERVER['usuario'] - Poner esto bien, asi no se ponía ?></h1>
         </div>
-        <div class="contenedirCalendario">
+        <div class="contenedorPedirCita">
+            <img src="../assets/img/cliente/calendar.svg" alt="">
+            <h2 class="nuevaCita">Solicitar nueva cita</h2>
+        </div>
+        <div class="contenedorCalendario">
             <input type="date" name="calendrio" id="calendario">
         </div>
         <div class="contenedorInformacion">

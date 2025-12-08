@@ -18,7 +18,7 @@
             <form action="" method="post">
                 <div class="divNombre">
                     <img src="../assets/img/areaPersonal/nombre.svg" alt="">
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    <input type="text" name="usuario" id="usuario" placeholder="Usuario">
                 </div>
                 <div class="divContraseña">
                     <img src="../assets/img/areaPersonal/contraseña.svg" alt="">

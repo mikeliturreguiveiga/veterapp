@@ -23,7 +23,7 @@
     margin: 0;
 }
 
-.contenedirCalendario {
+.contenedorPedirCita {
     background-color: rgb(44, 44, 207);
     width: 60%;
     border-radius: 3%;
@@ -31,6 +31,30 @@
     display: flex;
     justify-content: center;
     box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+    margin-bottom: 1em;
+}
+
+.contenedorPedirCita img, .contenedorPedirCita h2 {
+    color: white;
+    font-size: 1em;
+}
+
+.contenedorPedirCita img:hover, .contenedorPedirCita h2:hover {
+    cursor: pointer;
+}
+
+.contenedorCalendario {
+    background-color: rgb(44, 44, 207);
+    width: 60%;
+    border-radius: 3%;
+    padding: 0.8em;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contenedorInformacion {
@@ -104,7 +128,7 @@ form .contenedorBotonAñadir input {
   text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   margin-top: 15px;
   text-align: center;
-  width: 40%;
+  width: 20%;
 }
 
 
@@ -144,7 +168,7 @@ form .contenedorBotonAñadir input {
 
 .diaHora {
     background-color: rgb(44, 44, 207);
-    width: 60%;
+    width: 70%;
     border-radius: 3%;
     padding: 0.8em;
     display: flex;
@@ -154,6 +178,14 @@ form .contenedorBotonAñadir input {
     width: 20%;
     margin: 0.5em;
     color: rgb(224, 224, 224);
+}
+
+.diaHora h3 {
+    font-size: 0.8em;
+}
+
+.diaHora h4 {
+    font-size: 0.6em;
 }
 
 .opciones {
@@ -171,4 +203,20 @@ form .contenedorBotonAñadir input {
     padding: 0.5em;
     border-radius: 5%;
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+}
+
+/* Versión tablet */
+/* Lo dejo igual que movil */
+
+/* Versión escritorio */
+
+@media (min-width: 1024px) {
+    .contenedorCitas {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .contenedorPedirCita, .contenedorCalendario {
+        width: 25%;
+    }
 }

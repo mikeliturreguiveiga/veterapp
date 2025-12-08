@@ -4,4 +4,8 @@ $(document).ready(function() {
       $('.botonAñadirMascota').on('click', function() {
         $('.menuAñadirMascota').slideToggle();
       });
+
+      $('.nuevaCita').on('click', function() {
+        $('.contenedorCalendario').slideToggle();
+      });
 });
