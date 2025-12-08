@@ -1,0 +1,184 @@
+header {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(44, 44, 207);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(221, 221, 221);
+  z-index: 100; /* con este z-index lo colocamos por encima del overlay */
+  height: 62px;
+}
+
+.izquierda {
+  display: flex;
+  flex-direction: row;
+}
+
+.izquierda img:first-of-type {
+  height: 40px;
+  width: auto;
+  padding-top: 10px;
+}
+
+.izquierda img:last-of-type {
+  height: 40px;
+  width: auto;
+  padding-top: 10px;
+}
+
+header img {
+  height: 30px;
+  width: auto;
+  justify-content: center;
+  padding-top: 15px;
+  padding-right: 5px;
+}
+
+header img:active {
+  /* animacion de la hamburguesa al activarla */
+  animation: clickAnim 0.3s forwards;
+}
+
+@keyframes clickAnim {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+header .navMenu {
+  position: absolute;
+  margin: 0;
+  padding: 10px;
+  border: 0;
+  background-color: rgb(44, 44, 207);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  gap: 20px;
+  top: 62px;
+  display: none;
+}
+
+header .navMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+header .navMenu ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header ul li a {
+  font-size: 10px;
+}
+
+/* header tablet */
+@media (min-width: 768px) {
+}
+
+/* header escritorio */
+@media (min-width: 1024px) {
+
+  header {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(44, 44, 207);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(221, 221, 221);
+    z-index: 100; /* con este z-index lo colocamos por encima del overlay */
+    height: 82px;
+  }
+
+  .izquierda {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .izquierda img:first-of-type {
+    height: 40px;
+    width: auto;
+    padding-top: 20px;
+  }
+
+  .izquierda img:last-of-type {
+    height: 60px;
+    width: auto;
+    padding-top: 10px;
+  }
+
+  header img {
+    height: 30px;
+    width: auto;
+    justify-content: center;
+    padding-top: 15px;
+    padding-right: 5px;
+  }
+
+  header img:active {
+    /* animacion de la hamburguesa al activarla */
+    animation: clickAnim 0.3s forwards;
+  }
+
+  @keyframes clickAnim {
+    0% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+
+  header .navMenu {
+    position: static; /* Quitamos flujo absoluto */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgb(44, 44, 207);
+    width: auto;
+    gap: 30px;
+    
+  }
+
+  header .navMenu ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  header .navMenu ul li a {
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+
+  header .navMenu ul li a:hover {
+    color: rgb(180, 180, 255);
+  }
+
+  .hamburguesa {
+    display: none;
+  }
+}
