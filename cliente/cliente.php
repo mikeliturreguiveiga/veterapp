@@ -10,10 +10,13 @@
 </head>
 
 <body>
-    <?php include('../includes/headerCliente.php') ?>
+    <?php include('../includes/headerCliente.php');
+    session_start();
+    ?>
+    
     <div class="contenedorPantallaCompleta">
         <div class="contenedorCabecera">
-            <h1>!Hola <?php //$_SERVER['usuario'] - Poner esto bien, asi no se ponía ?></h1>
+            <h1>Hola <?php echo $_SESSION['usuario'];?></h1>
         </div>
         <div class="contenedorPedirCita">
             <img src="../assets/img/cliente/calendar.svg" alt="">
