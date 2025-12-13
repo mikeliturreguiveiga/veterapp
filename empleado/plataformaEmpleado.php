@@ -7,13 +7,20 @@
     <link rel="stylesheet" href="../assets/css/plataformaEmpleado.css">
 </head>
 <body>
-    <?php include("../includes/headerEmpleado.php"); 
-            //mas includes
-    
-    ?>
+    <!-- Includes PHP  -->
+    <?php include("../includes/headerEmpleado.php");?>
+
+
+    <!-- javaScript para ancho mínimo de pantalla para uso de plataforma  -->
+    <script>
+        if (window.innerWidth < 1024) {
+            alert("La plataforma de empleado unicamente se puede usar en versión escritorio");
+            window.location.href = "../includes/logOut.php";
+        }
+    </script>
+
 
     <!-- HTML  -->
-
     <div class="contenedorAgenda">
         <h1>PREVISUALIZACIÓN DE AGENDA</h1>
         <div class="contenedorCitas">

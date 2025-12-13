@@ -18,7 +18,7 @@
         <img src="../assets/img/hamburguesa.svg" alt="hamburguesa" class="hamburguesa">
         <nav class="navMenu">
             <ul>
-                <li><a href="..">INICIO</a></li>
+                <li><a href="../empleado/plataformaEmpleado.php">INICIO</a></li>
                 <li><a href="..">AGENDA</a></li>
                 <li><a href="..">USUARIOS</a></li>
                 <li><a href="..">MASCOTAS</a></li>
