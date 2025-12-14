@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-color: rgb(166, 222, 252);
+    background-color: rgb(169, 223, 252);
     height: 100%;
     min-height: 100%;
 }
@@ -16,7 +16,7 @@ body {
 }
 
 .contenedorAgenda h1 {
-    color: rgb(239, 239, 239);
+    color: rgb(0, 0, 207);
     text-align: center;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -45,7 +45,7 @@ body {
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-color: rgb(115, 183, 255);
+    border-color: rgb(119, 183, 252);
     border-width: 0.2em;
     border-style: solid;
 }
@@ -53,19 +53,89 @@ body {
 .tarjeta table {
     margin: 0;
     width: 90%;
-}
-
-.tarjeta table caption h1{
-    margin: 1em;
+    color: rgb(0, 0, 181);
     text-align: center;
+    width: 100%;
 }
 
+.tarjeta table caption {
+    margin: 0.5em;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight:bold ;
+}
 
+.tarjeta table tr {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
 
+/*.tarjeta table tr th{. TENIA ESTO PERO NO PODIA DEJAR LA LÍNEA DISCONTINUA
+    text-align: center;
+    width: 100%;
+    border-bottom: 0.1em solid rgb(0, 0, 181);
+}*/
+
+.tarjeta table tr th { /* HICE ESTE PARA ODER HACERLO DISCONTÍNUA */
+    text-align: center;
+    width: 100%;
+    background-image: linear-gradient(
+        to right,
+        transparent 10%,
+        rgb(0, 0, 181) 10%,
+        rgb(0, 0, 181) 90%,
+        transparent 90%
+    );
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.tarjeta table tr td{
+    text-align: center;
+    width: 100%;
+    margin: 0.2em;
+}
 
 .contenedorGeneralClientesMascotas {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 42%;
+}
+
+.contenedorGeneralClientesMascotas .contenedorClientes, .contenedorGeneralClientesMascotas .contenedorMascotas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contenedorGeneralClientesMascotas .tarjetaMascotas, .contenedorGeneralClientesMascotas .tarjetaClientes {
+    width: 80%;
+}
+
+.contenedorBotonRefrescarPanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorBotonRefrescarPanel input {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: rgb(79, 79, 244);
+    color: white;
+    box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+    padding: 8px 15px;
+    margin: 1em;
+    border-radius: 8px;
+    text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
+
 }

@@ -8,7 +8,11 @@
 </head>
 <body>
     <!-- Includes PHP  -->
-    <?php include("../includes/headerEmpleado.php");?>
+    <?php 
+        include("../includes/headerEmpleado.php");
+        include("../includes/conexion.php");
+        include("../includes/plataformaEmpleadoInicio.php");
+    ?>
 
 
     <!-- javaScript para ancho mínimo de pantalla para uso de plataforma  -->
@@ -34,10 +38,15 @@
                             <th>Cliente</th>
                             <th>Mascota</th>
                         </tr>
-                        <tr><!-- Esto se hace con php  -->
-                            <td></td>
-                            <td></td>
+                        <!-- Sacamos datos con PHP  -->
+                         <?php foreach ($agendaCitasPasadas as $cita): ?>
+                        <tr>
+                            <td><?php echo $cita['fecha']; ?></td>
+                            <td><?php echo $cita['hora']; ?></td>
+                            <td><?php echo $cita['nombre_usuario']; ?></td>
+                            <td><?php echo $cita['nombre_mascota']; ?></td>
                         </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>
@@ -51,10 +60,15 @@
                             <th>Cliente</th>
                             <th>Mascota</th>
                         </tr>
-                        <tr><!-- Esto se hace con php  -->
-                            <td></td>
-                            <td></td>
+                        <!-- Sacasmos datos con php  -->
+                        <?php foreach ($agendaCitasHoy as $cita): ?>
+                        <tr>
+                            <td><?php echo $cita['fecha']; ?></td>
+                            <td><?php echo $cita['hora']; ?></td>
+                            <td><?php echo $cita['nombre_usuario']; ?></td>
+                            <td><?php echo $cita['nombre_mascota']; ?></td>
                         </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>
@@ -68,10 +82,15 @@
                             <th>Cliente</th>
                             <th>Mascota</th>
                         </tr>
-                        <tr><!-- Esto se hace con php  -->
-                            <td></td>
-                            <td></td>
+                        <!-- Sacasmos datos con php  -->
+                        <?php foreach ($agendaCitasProximas as $cita): ?>
+                        <tr>
+                            <td><?php echo $cita['fecha']; ?></td>
+                            <td><?php echo $cita['hora']; ?></td>
+                            <td><?php echo $cita['nombre_usuario']; ?></td>
+                            <td><?php echo $cita['nombre_mascota']; ?></td>
                         </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>
@@ -81,35 +100,52 @@
         <div class="contenedorClientes">
             <div class="tarjeta tarjetaClientes">
                 <table>
-                <caption>Previsualización clientes</caption>
+                <caption>Previsualización clientes con cita hoy</caption>
                     <tr>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Teléfono</th>
                     </tr>
-                    <tr><!-- Esto se hace con php  -->
-                        <td></td>
-                        <td></td>
+                    <!-- Sacamos datos con php  -->
+                     <?php foreach ($agenda_citas_usuarios_hoy as $cita): ?>
+                    <tr>
+                        <td><?php echo $cita['nombre_usuario']; ?></td>
+                        <td><?php echo $cita['apellido_usuario']; ?></td>
+                        <td><?php echo $cita['telefono_usuario']; ?></td>
                     </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>
         <div class="contenedorMascotas">
             <div class="tarjeta tarjetaMascotas">
                 <table>
-                <caption>Previsualizacion mascotas</caption>
+                <caption>Previsualizacion mascotas con cita hoy</caption>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Teléfono</th>
+                        <th>Nombre usuario</th>
+                        <th>Nombre mascota</th>
+                        <th>Especie</th>
+                        <th>Raza</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Lesión</th>
                     </tr>
-                    <tr><!-- Esto se hace con php  -->
-                        <td></td>
-                        <td></td>
+                    <!-- Esto se hace con php  -->
+                    <?php foreach ($agenda_citas_mascotas_hoy as $cita): ?>
+                    <tr>
+                        <td><?php echo $cita['nombre_usuario']; ?></td>
+                        <td><?php echo $cita['nombre_mascota']; ?></td>
+                        <td><?php echo $cita['especie']; ?></td>
+                        <td><?php echo $cita['raza']; ?></td>
+                        <td><?php echo $cita['fecha_nacimiento']; ?></td>
+                        <td><?php echo $cita['lesion']; ?></td>
                     </tr>
+                    <?php endforeach ?>
                 </table>
             </div>
         </div>
+    </div>
+    <div class="contenedorBotonRefrescarPanel">
+        <input type="button" value="Refrescar panel">
     </div>
 
     <?php include("../includes/footerUsuario.php") ?>
