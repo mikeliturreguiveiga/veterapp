@@ -145,7 +145,7 @@
         </div>
     </div>
     <div class="contenedorBotonRefrescarPanel">
-        <input type="button" value="Refrescar panel">
+        <input type="button" value="Refrescar panel" onclick="location.reload();">
     </div>
 
     <?php include("../includes/footerUsuario.php") ?>

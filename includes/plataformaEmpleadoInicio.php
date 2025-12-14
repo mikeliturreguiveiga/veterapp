@@ -16,7 +16,7 @@
                     mascotas M ON C.id_mascota = M.id_mascota ";
 
         
-        //Separamos en diferentes arrays los datos de cotas por fechas
+        //Separamos en diferentes arrays los datos de citas por fechas
 
         //PARA LAS PASADAS
         $consultaPasadas = $consulta . " WHERE C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";

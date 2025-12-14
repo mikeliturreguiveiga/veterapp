@@ -128,7 +128,7 @@ form .contenedorBotonAñadir input {
   text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   margin-top: 15px;
   text-align: center;
-  width: 20%;
+  min-width: 20%;
 }
 
 

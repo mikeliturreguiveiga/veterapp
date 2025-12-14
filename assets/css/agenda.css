@@ -1,0 +1,38 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(169, 223, 252);
+    height: 100%;
+    min-height: 100%;
+}
+
+.contenedorGeneral {
+    height: 82%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedorFormulario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 0.8em;
+}
+
+.tarjeta{
+    background-color: white;
+    border-radius: 15px;
+    width: 95%;
+    height: 80%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: rgb(119, 183, 252);
+    border-width: 0.2em;
+    border-style: solid;
+}
