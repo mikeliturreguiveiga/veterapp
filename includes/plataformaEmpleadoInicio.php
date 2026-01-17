@@ -1,4 +1,20 @@
 <?php
+    //------------------------------------CODIGO PAGINADO DE TABLAS----------------------------------------
+        $resultados_por_pagina = 5; //Defino el numero máximo de filas en la tabla
+
+        //Capturo la pagina actual de la URL
+        $pagina_pasadas = isset($_GET['pp']) ? (int)$_GET['pp'] : 1;
+        $pagina_hoy = isset($_GET['ph']) ? (int)$_GET['ph'] : 1;
+        $pagina_proximas = isset($_GET['pr']) ? (int)$_GET['pr'] : 1;
+
+        //Calculamos el punto de inicio para el SQL
+        $inicio_pasadas = ($pagina_pasadas - 1) * $resultados_por_pagina;
+        $inicio_hoy = ($pagina_hoy - 1) * $resultados_por_pagina;
+        $inicio_proximas = ($pagina_proximas - 1) * $resultados_por_pagina;
+
+
+
+
     //---------------------------CODIGO PARA LA PREVISUALIZACION DE LA AGENDA------------------------------
         $fechaActual = date("Y-m-d");
         $consulta = "SELECT
@@ -19,7 +35,7 @@
         //Separamos en diferentes arrays los datos de citas por fechas
 
         //PARA LAS PASADAS
-        $consultaPasadas = $consulta . " WHERE C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
+        $consultaPasadas = $consulta . " WHERE C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_pasadas";
 
         $resultadoConsultaPasadas = $conexion->query($consultaPasadas);
 
@@ -30,7 +46,7 @@
         }
 
         //PARA LAS DE HOY
-        $consultaHoy = $consulta . " WHERE C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
+        $consultaHoy = $consulta . " WHERE C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_hoy";
 
         $resultadoConsultaHoy = $conexion->query($consultaHoy);
 
@@ -41,7 +57,7 @@
         }
 
         //PARA LAS PASADAS
-        $consultaProximas = $consulta . " WHERE C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
+        $consultaProximas = $consulta . " WHERE C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_proximas";
 
         $resultadoConsultaProximas = $conexion->query($consultaProximas);
 

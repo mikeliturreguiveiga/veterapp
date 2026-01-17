@@ -21,7 +21,7 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   background-image: url("../img/tienda/comidaPortada.webp");
   background-size: cover;
-  border-radius: 2%;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@ body {
 
 .contenedorLogoClinica {
   background-color: rgb(44, 44, 207);
-  border-radius: 50%;
+  border-radius: 15px;
   width: 4em;
   height: 4em;
   margin-bottom: 30px;
@@ -43,7 +43,7 @@ body {
 
 .contenedorFormulario {
   background-color: white;
-  border-radius: 3%;
+  border-radius: 15px;
   width: 100%;
   height: 80%;
   display: flex;
@@ -85,7 +85,7 @@ body {
   color: white;
   box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   padding: 8px 15px;
-  border-radius: 8px;
+  border-radius: 15px;
   text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   margin-top: 15px;
   text-align: center;
@@ -104,7 +104,7 @@ body {
 
   .contenedorFormulario {
     background-color: white;
-    border-radius: 3%;
+    border-radius: 15px;
     width: 100%;
     height: 80%;
     display: flex;
@@ -154,7 +154,7 @@ body {
   color: white;
   box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   padding: 8px 15px;
-  border-radius: 8px;
+  border-radius: 15px;
   text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   margin-top: 15px;
   text-align: center;
