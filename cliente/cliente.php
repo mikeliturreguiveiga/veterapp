@@ -25,7 +25,19 @@
             <h2 class="nuevaCita">Solicitar nueva cita</h2>
         </div>
         <div class="contenedorCalendario">
-            <input type="date" name="calendrio" id="calendario">
+            <form class="formulario_nueva_cita" action="" method="post">
+                <label for="mascota_select">¿Para quien es la cita?</label>
+                <select name="id_mascota_nueva_cita" id="mascota_select" require>
+                    <?php foreach($array_datos_mascota as $mascota): ?>
+                        <option value="<?php echo $mascota['id_mascota']; ?>">
+                            <?php echo $mascota['nombre'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <input type="date" name="calendario" id="calendario">
+                <input type="time" name="hora_nueva_cita" id="hora_nueva_cita">
+                <input type="submit" value="Pedir cita" name="boton_pedir_cita" id="boton_pedir_cita">
+            </form>
         </div>
         <div class="contenedorInformacion">
             <div class="contenedorInformacionMascotas">
@@ -59,8 +71,8 @@
                             <?php endforeach; ?>
                         </div>
                         <div class="CitaInformacion">
-                            <?php foreach ($array_datos_mascota as $fila): ?>
-                                <h2>Paciente: <?php echo $fila['nombre'] ?></h2>
+                            <?php foreach ($array_proximas as $cita): ?>
+                                <h2>Paciente: <?php echo $cita['nombre'] ?></h2>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -75,16 +87,17 @@
                             <?php endforeach; ?>
                         </div>
                         <div class="CitaInformacion">
-                            <?php foreach ($array_datos_mascota as $fila): ?>
-                                <h2>Paciente: <?php echo $fila['nombre'] ?></h2>
+                            <?php foreach ($array_anteriores as $cita): ?>
+                            <h2>Paciente: <?php echo $cita['nombre'] ?></h2>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="opciones">
-                <input type="button" value="Modificar proxima cita">
-                <input type="button" value="Cancelar proxima cita">
+                <form class="formulario_boton_cancelar" action="" method="post">
+                    <input type="submit" value="Cancelar proxima cita" name="cancelar_cita" id="cancelar_cita">
+                </form>
             </div>
         </div>
     </div>

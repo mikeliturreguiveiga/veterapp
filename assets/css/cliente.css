@@ -57,6 +57,17 @@
     align-items: center;
 }
 
+.contenedorCalendario .formulario_nueva_cita {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.contenedorCalendario .formulario_nueva_cita .boton_pedir_cita{
+    all: unset;
+    background-color: white !important;
+}
+
 .contenedorInformacion {
     background-color: rgb(240, 240, 255);
     margin: 1.5em;
@@ -88,7 +99,7 @@
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 
-form {
+.menuAñadirMascota {
     display: grid;
     grid-template-columns: repeat(1fr);
     width: 60%;
@@ -204,6 +215,8 @@ form .contenedorBotonAñadir input {
     border-radius: 15px;
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
+
+
 
 /* Versión tablet */
 /* Lo dejo igual que movil */

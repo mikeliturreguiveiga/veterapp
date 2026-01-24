@@ -4,6 +4,23 @@ $id_logeado = $_SESSION['id'];
 $fecha_hoy = date('Y-m-d');
 $hora_hoy = date('H:i:s');
 
+//-------------------------------CODIGO AÑADIR CITA-------------------------------
+    if (isset($_POST['boton_pedir_cita'])) {
+        $id_mascota = $_POST['id_mascota_nueva_cita'];
+        $fecha = $_POST['calendario'];
+        $hora = $_POST['hora_nueva_cita'];
+        $consulta_pedir_cita = "INSERT INTO citas (id_usuario, id_mascota, fecha, hora)
+                                VALUES ('$id_logeado', '$id_mascota', '$fecha', '$hora')";
+
+        $ejecucion_consulta = $conexion->query($consulta_pedir_cita);
+
+        if($ejecucion_consulta){
+            echo "<script>
+                    alert('Cita añadida.');
+                    window.location.href = 'cliente.php'; 
+                  </script>";
+        }
+    }
 //----------------CODIGO PARA OBTENER LAS MASCOTAS DEL DUEÑO LOGUEADO------------------------
 $consulta_mascotas_de_logeado = "SELECT * FROM mascotas WHERE id_usuario = '$id_logeado'";
 $resultado_consulta_mascotas_de_logeado = $conexion->query($consulta_mascotas_de_logeado);
@@ -19,7 +36,9 @@ while($fila = $resultado_consulta_mascotas_de_logeado->fetch_assoc()){
 }
     
 //---------------------------------CODIGO CITAS CLIENTE---------------------------
-$consulta_cita_cliente = "SELECT * FROM citas WHERE id_usuario = '$id_logeado'";
+$consulta_cita_cliente = "SELECT * FROM citas 
+                          INNER JOIN mascotas ON citas.id_mascota = mascotas.id_mascota 
+                          WHERE citas.id_usuario = '$id_logeado'";
 $resultado_consulta_cita_cliente = $conexion->query($consulta_cita_cliente);
 $array_resultado_cita_cliente = array();
 
@@ -39,7 +58,24 @@ while($fila = $resultado_consulta_cita_cliente->fetch_assoc()){
             $array_anteriores[] = $fila;
         }
     }
-    
+}
+
+//--------------------------------CODIGO CANCELAR CITA--------------------------------
+if (isset($_POST['cancelar_cita'])) {
+    if(isset($array_proximas)){
+        $consulta_elimiar_cita = "DELETE FROM citas 
+                                    WHERE id_usuario = '$id_logeado' 
+                                    ORDER BY fecha DESC, hora DESC 
+                                    LIMIT 1;";
+
+        $ejecutar_borrado = $conexion->query($consulta_elimiar_cita);
+        if ($ejecutar_borrado) {
+            echo "<script>
+                    alert('Cita eliminada.');
+                    window.location.href = 'cliente.php'; 
+                  </script>";
+        }
+    }
 }
 
 //-----------------------------CODIGO AÑADIR NUEVA MASCOTA----------------------------
@@ -66,10 +102,6 @@ if (isset($_POST['añadir_mascota_cliente'])) {
                     window.location.href = 'cliente.php'; 
                   </script>";
     }
-
 }
-
-
-
 
 ?>
