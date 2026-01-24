@@ -1,0 +1,72 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(169, 223, 252);
+    height: 100%;
+    min-height: 100%;
+}
+
+.contenedorGeneral {
+    height: 82%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedorGeneral h2 {
+    color: rgb(0, 0, 181);
+}
+
+.tarjeta{
+    background-color: white;
+    border-radius: 15px;
+    width: 95%;
+    height: 80%;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: rgb(119, 183, 252);
+    border-width: 0.2em;
+    border-style: solid;
+    color: rgb(0, 0, 181);
+}
+
+.contenedorPanel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    margin-top: 0.8em;
+}
+
+.panel_informacion {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel_informacion .tabla_usuarios {
+    height: 95%;
+    width: 95%;
+}
+
+.panel_informacion table tr th, .panel_informacion table tr td {
+    text-align: center;
+}
+
+.contenedor_formulario .formulario_botones input {
+    all:unset;
+    background-color: rgb(44, 44, 207);
+    color: rgb(249, 249, 249);
+    margin: 0.7em;
+    padding: 0.5em;
+    border-radius: 15px;
+    text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+}
+
+.contenedor_formulario .formulario_botones input:hover {
+    cursor: pointer;
+}

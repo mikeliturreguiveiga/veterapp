@@ -20,8 +20,8 @@
             <ul>
                 <li><a href="../empleado/plataformaEmpleado.php">INICIO</a></li>
                 <li><a href="../empleado/agenda.php">AGENDA</a></li>
-                <li><a href="..">USUARIOS</a></li>
-                <li><a href="..">MASCOTAS</a></li>
+                <li><a href="../empleado/usuarios.php">USUARIOS</a></li>
+                <li><a href="../empleado/mascotas.php">MASCOTAS</a></li>
                 <li><a href="../includes/logOut.php">CERRAR SESIÓN</a></li>
             </ul>
         </nav>

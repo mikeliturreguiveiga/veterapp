@@ -66,11 +66,17 @@ body {
 }
 
 .formulario_panel button {
-    margin: 1em;
+    all:unset;
+    background-color: rgb(44, 44, 207);
+    color: rgb(249, 249, 249);
+    margin: 0.7em;
+    padding: 0.5em;
+    border-radius: 15px;
+    text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 
-.formulario_panel form input{
-    margin: 1em;
+.formulario_panel button:hover {
+    cursor: pointer;
 }
 
 .panel_informacion table {
