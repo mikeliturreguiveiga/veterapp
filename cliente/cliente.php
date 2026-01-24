@@ -10,8 +10,10 @@
 </head>
 
 <body>
-    <?php include('../includes/headerCliente.php');
+    <?php 
     session_start();
+    include('../includes/headerCliente.php');
+    include('../includes/cliente.php');
     ?>
     
     <div class="contenedorPantallaCompleta">
@@ -29,18 +31,20 @@
             <div class="contenedorInformacionMascotas">
                 <h2>Mis mascotas</h2>
                 <div class="tarjetaMascotas">
-                    <h2>Nombre: <?php //Nombre de animal de base de datos ?></h2>
-                    <h2>Especie: <?php //Nombre de animal de base de datos ?></h2>
-                    <h2>Edad: <?php //Nombre de animal de base de datos ?></h2>
+                    <?php foreach ($array_datos_mascota as $fila): ?>
+                    <h2>Nombre: <?php echo $fila['nombre'] ?></h2>
+                    <h2>Especie: <?php echo $fila['especie'] ?></h2>
+                    <h2>Edad: <?php echo $edad ?></h2>
+                    <?php endforeach; ?>
                 </div>
                 <input class="botonAñadirMascota" type="button" value="Añadir Mascota" id="botonAñadirMascota" name="botonAñadirMascota"> <!-- Este hacerlo con jquery para esconder el formulario-->
                 <form class="menuAñadirMascota" action="" method="post">
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-                    <input type="text" name="especie" id="especie" placeholder="Especie">
-                    <input type="text" name="raza" id="raza" placeholder="Raza">
-                    <input type="text" name="edad" id="edad" placeholder="Edad">
+                    <input type="text" name="nombre_mascota_nueva" id="nombre_mascota_nueva" placeholder="Nombre">
+                    <input type="text" name="especie_mascota_nueva" id="especie_mascota_nueva" placeholder="Especie">
+                    <input type="text" name="raza_mascota_nueva" id="raza_mascota_nueva" placeholder="Raza">
+                    <input type="text" name="fecha_nacimiento_mascota_nueva" id="fecha_nacimiento_mascota_nueva" placeholder="Fecha nac. año-mes-día">
                     <div class="contenedorBotonAñadir">
-                        <input class="botonAñadirAnimal" type="submit" value="Añadir">
+                        <input class="botonAñadirAnimal" type="submit" value="Añadir" id="añadir_mascota_cliente" name="añadir_mascota_cliente">
                     </div>
                 </form>
             </div>
@@ -49,12 +53,15 @@
                     <h2>Proximas citas</h2>
                     <div class="tarjetaProximaCita tarjeta">
                         <div class="diaHora">
-                            <h3>17:00 h</h3>
-                            <h4>Jue 7/09</h4>
+                            <?php foreach ($array_proximas as $cita): ?>
+                            <h3><?php echo $cita['fecha'] ?></h3>
+                            <h4><?php echo $cita['hora'] ?></h4>
+                            <?php endforeach; ?>
                         </div>
                         <div class="CitaInformacion">
-                            <h2>Paciente: <?php //Nombre del animal de base de datos ?></h2>
-                            </h2>
+                            <?php foreach ($array_datos_mascota as $fila): ?>
+                                <h2>Paciente: <?php echo $fila['nombre'] ?></h2>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -62,19 +69,22 @@
                     <h2>Citas anteriores</h2>
                     <div class="tarjetaCitaAnterior tarjeta">
                         <div class="diaHora">
-                            <h3>17:00 h</h3>
-                            <h4>Jue 7/09</h4>
+                            <?php foreach ($array_anteriores as $cita): ?>
+                            <h3><?php echo $cita['fecha'] ?></h3>
+                            <h4><?php echo $cita['hora'] ?></h4>
+                            <?php endforeach; ?>
                         </div>
                         <div class="CitaInformacion">
-                            <h2>Paciente: <?php //Nombre del animal de base de datos ?></h2>
-                            </h2>
+                            <?php foreach ($array_datos_mascota as $fila): ?>
+                                <h2>Paciente: <?php echo $fila['nombre'] ?></h2>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="opciones">
-                <input type="button" value="Modificar">
-                <input type="button" value="Cancelar">
+                <input type="button" value="Modificar proxima cita">
+                <input type="button" value="Cancelar proxima cita">
             </div>
         </div>
     </div>

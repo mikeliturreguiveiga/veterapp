@@ -12,7 +12,7 @@
     margin: 1.5em;
     padding: 0;
     width: 80%;
-    border-radius: 3%;
+    border-radius: 15px;
     box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 .contenedorCabecera h1 {
@@ -26,7 +26,7 @@
 .contenedorPedirCita {
     background-color: rgb(44, 44, 207);
     width: 60%;
-    border-radius: 3%;
+    border-radius: 15px;
     padding: 0.8em;
     display: flex;
     justify-content: center;
@@ -46,7 +46,7 @@
 .contenedorCalendario {
     background-color: rgb(44, 44, 207);
     width: 60%;
-    border-radius: 3%;
+    border-radius: 15px;
     padding: 0.8em;
     display: flex;
     justify-content: center;
@@ -62,7 +62,7 @@
     margin: 1.5em;
     padding: 0;
     width: 80%;
-    border-radius: 3%;
+    border-radius: 15px;
     box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 
@@ -84,7 +84,7 @@
     color: rgb(224, 224, 224);
     margin: 0.7em;
     padding: 0.5em;
-    border-radius: 5%;
+    border-radius: 15px;
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 
@@ -124,7 +124,7 @@ form .contenedorBotonAñadir input {
   color: white;
   box-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   padding: 8px 15px;
-  border-radius: 8px;
+  border-radius: 15px;
   text-shadow: 2px 2px 4px rgba(32, 32, 32, 0.4);
   margin-top: 15px;
   text-align: center;
@@ -136,7 +136,7 @@ form .contenedorBotonAñadir input {
     border-color: rgb(115, 183, 255);
     border-width: 0.2em;
     border-style: solid;
-    border-radius: 3%;
+    border-radius: 15px;
     width: 80%;
 }
 
@@ -160,7 +160,7 @@ form .contenedorBotonAñadir input {
     border-color: rgb(115, 183, 255);
     border-width: 0.2em;
     border-style: solid;
-    border-radius: 3%;
+    border-radius: 15px;
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -168,8 +168,8 @@ form .contenedorBotonAñadir input {
 
 .diaHora {
     background-color: rgb(44, 44, 207);
-    width: 70%;
-    border-radius: 3%;
+    width: 50%;
+    border-radius: 15px;
     padding: 0.8em;
     display: flex;
     flex-direction: column;
@@ -201,7 +201,7 @@ form .contenedorBotonAñadir input {
     color: rgb(224, 224, 224);
     margin: 0.7em;
     padding: 0.5em;
-    border-radius: 5%;
+    border-radius: 15px;
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 
