@@ -57,7 +57,7 @@ body {
     text-align: center;
 }
 
-.contenedor_formulario .formulario_botones input {
+.contenedor_formulario input {
     all:unset;
     background-color: rgb(44, 44, 207);
     color: rgb(249, 249, 249);
@@ -67,6 +67,50 @@ body {
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 
+.contenedor_formulario input:hover {
+    cursor: pointer;
+}
+
 .contenedor_formulario .formulario_botones input:hover {
+    cursor: pointer;
+}
+
+.formulario_nuevo_usuario {
+    display: none;
+}
+.formulario_borrar_usuario {
+    display: none;
+}
+.formulario_editar_usuario {
+    display: none;
+}
+
+form h3 {
+    text-align: center;
+}
+
+.formulario_nuevo_usuario form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario_nuevo_usuario form input {
+    margin: 1em;
+}
+
+.formulario_nuevo_usuario form input:last-of-type {
+    all:unset;
+    background-color: rgb(44, 44, 207);
+    color: rgb(249, 249, 249);
+    margin: 0.7em;
+    padding: 0.5em;
+    border-radius: 15px;
+    text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+    width: 40%;
+    text-align: center;
+}
+
+.formulario_nuevo_usuario form input:last-of-type:hover {
     cursor: pointer;
 }
