@@ -41,16 +41,18 @@ if (isset($_POST['boton_añadir_nuevo_usuario'])) {
     
 }
 //------------------------------CODIGO EDITAR USUARIO----------------------------------
-if (isset($_POST['boton_añadir_nuevo_usuario'])) { //VOY POR AQUI ESTA SIN TERMINAR AUN NO FUNCIONA
-    $id = $_POST['id_usuario_final'];
-    $nom = $_POST['nombre_edit'];
-    $ape = $_POST['apellido_edit'];
-    $tel = $_POST['tel_edit'];
-    $em = $_POST['email_edit'];
-    $dir = $_POST['dir_edit'];
+
+if (isset($_POST['boton_editar_usuario'])) {
+    $id = $_POST['id_usuario_editar'];
+    $nom = $_POST['nombre_editar_usuario'];
+    $ape = $_POST['apellido_editar_usuario'];
+    $tel = $_POST['telefono_editar_usuario'];
+    $em = $_POST['mail_editar_usuario'];
+    $dir = $_POST['direccion_editar_usuario'];
+
 
     if (!empty($id)) {
-        $sql_update = "UPDATE usuarios SET 
+        $consulta_editar_usuario = "UPDATE usuarios SET 
                         nombre = '$nom', 
                         apellidos = '$ape', 
                         telefono = '$tel', 
@@ -58,10 +60,40 @@ if (isset($_POST['boton_añadir_nuevo_usuario'])) { //VOY POR AQUI ESTA SIN TERM
                         direccion = '$dir' 
                        WHERE id_usuario = '$id'";
 
-        if ($conexion->query($sql_update)) {
+        $ejecutar_consulta_editar_usuario = $conexion->query($consulta_editar_usuario);
+
+        if ($ejecutar_consulta_editar_usuario) {
             echo "<script>alert('Usuario actualizado'); window.location.href='usuarios.php';</script>";
+        }else{
+            echo "<script>alert('No se puedo actualizar el usuario'); window.location.href='usuarios.php';</script>";
         }
     }
 }
 //------------------------------CODIGO ELIMINAR USUARIO----------------------------------
+if (isset($_POST['boton_eliminar_usuario'])) {
+    $id = $_POST['id_usuario_borrar'];
+    $nom = $_POST['nombre_borrar_usuario'];
+    $ape = $_POST['apellido_borrar_usuario'];
+    $tel = $_POST['telefono_borrar_usuario'];
+    $em = $_POST['mail_borrar_usuario'];
+    $dir = $_POST['direccion_borrar_usuario'];
+
+
+    if (!empty($id)) {
+        $consulta_borrar_contraseña_usuario = "DELETE FROM tipo_usuarios_contraseñas
+                       WHERE id_usuario = '$id'";
+
+        $consulta_borrar_datos_usurio = "DELETE FROM usuarios
+                       WHERE id_usuario = '$id'";
+
+        $ejecutar_consulta_borrar_contraseña = $conexion->query($consulta_borrar_contraseña_usuario);
+        $ejecutar_consulta_borrar_datos_usuario = $conexion->query($consulta_borrar_datos_usurio);
+
+        if ($ejecutar_consulta_borrar_datos_usuario) {
+            echo "<script>alert('Usuario eliminado'); window.location.href='usuarios.php';</script>";
+        }else{
+            echo "<script>alert('No se puedo eliminar el usuario'); window.location.href='usuarios.php';</script>";
+        }
+    }
+}
 ?>

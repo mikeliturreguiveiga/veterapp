@@ -22,7 +22,7 @@
         <h2>USUARIOS</h2>
         <div class="contenedorPanel">
             <div class="tarjeta panel_informacion">
-                <table class="tabla_usuarios">
+                <table class="tabla_usuarios" <?php if(isset($_POST['id_usuario_editar']) || isset($_POST['id_usuario_borrar'])) echo 'style=display:none;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div?>>
                     <tr>
                         <th>Nombre</th>
                         <th>Apellidos</th>
@@ -30,7 +30,7 @@
                         <th>Correo electróinco</th>
                         <th>Dirección</th>
                     </tr>
-                    <!--  Datos PHP citas hoy  -->
+                    <!--  Datos  -->
                     <?php foreach ($array_datos_usuarios as $dato):
                     ?>
                         <tr>
@@ -57,7 +57,7 @@
                     </form>
                 </div>
 
-                <div class="formulario_editar_usuario">
+                <div class="formulario_editar_usuario"  <?php if(isset($_POST['id_usuario_editar'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div?>>
                     <form action="" method="post">
                         <h3>EDITAR USUARIO</h3>
                         <select name="id_usuario_editar" onchange="this.form.submit()">
@@ -71,24 +71,30 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <input type="text" name="nombre_nuevo_usuario" id="nombre_nuevo_usuario" placeholder="Nombre">
-                        <input type="text" name="apellido_nuevo_usuario" id="apellido_nuevo_usuario" placeholder="apellido">
-                        <input type="tel" name="telefono_nuevo_usuario" id="telefono_nuevo_usuario" placeholder="600000000">
-                        <input type="mail" name="mail_nuevo_usuario" id="mail_nuevo_usuario" placeholder="mail@correo.com">
-                        <input type="text" name="direccion_nuevo_usuario" id="direccion_nuevo_usuario" placeholder="C/ejemplo 5">
-                        <input type="submit" value="añadir" name="añadir" id="añadir">
+                        <input type="text" name="nombre_editar_usuario" id="nombre_editar_usuario" placeholder="Nombre">
+                        <input type="text" name="apellido_editar_usuario" id="apellido_editar_usuario" placeholder="apellido">
+                        <input type="tel" name="telefono_editar_usuario" id="telefono_editar_usuario" placeholder="600000000">
+                        <input type="mail" name="mail_editar_usuario" id="mail_editar_usuario" placeholder="mail@correo.com">
+                        <input type="text" name="direccion_editar_usuario" id="direccion_editar_usuario" placeholder="C/ejemplo 5">
+                        <input type="submit" value="Confirmar cambios" name="boton_editar_usuario" id="boton_editar_usuario">
                     </form>
                 </div>
 
-                <div class="formulario_borrar_usuario">
+                <div class="formulario_borrar_usuario" <?php if(isset($_POST['id_usuario_borrar'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div?>>
                     <form action="" method="post">
                         <h3>BORRAR USUARIO</h3>
-                        <input type="text" name="nombre_nuevo_usuario" id="nombre_nuevo_usuario" placeholder="Nombre">
-                        <input type="text" name="apellido_nuevo_usuario" id="apellido_nuevo_usuario" placeholder="apellido">
-                        <input type="tel" name="telefono_nuevo_usuario" id="telefono_nuevo_usuario" placeholder="600000000">
-                        <input type="mail" name="mail_nuevo_usuario" id="mail_nuevo_usuario" placeholder="mail@correo.com">
-                        <input type="text" name="direccion_nuevo_usuario" id="direccion_nuevo_usuario" placeholder="C/ejemplo 5">
-                        <input type="submit" value="añadir" name="añadir" id="añadir">
+                        <select name="id_usuario_borrar" onchange="this.form.submit()">
+                            <option value="">-- Selecciona el usuario (ID - Nombre Apellidos) --</option>
+                            <?php foreach ($array_datos_usuarios as $usuario): ?>
+                                <option value="<?php echo $usuario['id_usuario']; ?>"
+                                    <?php if (isset($_POST['id_usuario_borrar']) && $_POST['id_usuario_borrar'] == $usuario['id_usuario']) echo 'selected'; ?>>
+
+                                    <?php echo "ID: " . $usuario['id_usuario'] . " - " . $usuario['nombre'] . " " . $usuario['apellidos']; ?>
+
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="submit" value="Eliminar" name="boton_eliminar_usuario" id="boton_eliminar_usuario">
                     </form>
                 </div>
             </div>
