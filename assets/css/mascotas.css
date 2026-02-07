@@ -71,6 +71,17 @@ body {
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
 }
 
+.contenedor_formulario_editar_rellenable {
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedor_formulario_editar_rellenable .izquierda, .contenedor_formulario_editar_rellenable .derecha {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .contenedor_formulario input:hover {
     cursor: pointer;
 }
@@ -79,7 +90,7 @@ body {
     cursor: pointer;
 }
 
-.formulario_nuevo_mascota {
+.formulario_nueva_mascota {
     display: none;
 }
 .formulario_borrar_mascota {
@@ -93,7 +104,7 @@ form h3 {
     text-align: center;
 }
 
-.formulario_nuevo_mascota form, 
+.formulario_nueva_mascota form, 
 .formulario_editar_mascota form, 
 .formulario_borrar_mascota form {
     display: flex;
@@ -101,13 +112,13 @@ form h3 {
     align-items: center;
 }
 
-.formulario_nuevo_mascota form input , 
+.formulario_nueva_mascota form input , 
 .formulario_editar_mascota form input, 
 .formulario_borrar_mascota form input{
     margin: 1em;
 }
 
-.formulario_nuevo_mascota form input:last-of-type , 
+/*.formulario_nueva_mascota form input:last-of-type , 
 .formulario_editar_mascota form input:last-of-type, 
 .formulario_borrar_mascota form input:last-of-type
 {
@@ -120,9 +131,21 @@ form h3 {
     text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
     width: 40%;
     text-align: center;
+}*/
+
+.confirmar_cambios {
+    all:unset;
+    background-color: rgb(44, 44, 207);
+    color: rgb(249, 249, 249);
+    margin: 0.7em;
+    padding: 0.5em;
+    border-radius: 15px;
+    text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+    width: 40%;
+    text-align: center;
 }
 
-.formulario_nuevo_mascota form input:last-of-type:hover , .formulario_editar_mascota form input:last-of-type:hover{
+.formulario_nueva_mascota form input:last-of-type:hover , .formulario_editar_mascota form input:last-of-type:hover{
     cursor: pointer;
 }
 
