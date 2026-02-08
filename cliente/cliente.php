@@ -10,15 +10,15 @@
 </head>
 
 <body>
-    <?php 
+    <?php
     session_start();
     include('../includes/headerCliente.php');
     include('../includes/cliente.php');
     ?>
-    
+
     <div class="contenedorPantallaCompleta">
         <div class="contenedorCabecera">
-            <h1>Hola <?php echo $_SESSION['usuario'];?></h1>
+            <h1>Hola <?php echo $_SESSION['usuario']; ?></h1>
         </div>
         <div class="contenedorPedirCita">
             <img src="../assets/img/cliente/calendar.svg" alt="">
@@ -26,17 +26,20 @@
         </div>
         <div class="contenedorCalendario">
             <form class="formulario_nueva_cita" action="" method="post">
-                <label for="mascota_select">¿Para quien es la cita?</label>
-                <select name="id_mascota_nueva_cita" id="mascota_select" require>
-                    <?php foreach($array_datos_mascota as $mascota): ?>
-                        <option value="<?php echo $mascota['id_mascota']; ?>">
-                            <?php echo $mascota['nombre'] ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <input type="date" name="calendario" id="calendario">
-                <input type="time" name="hora_nueva_cita" id="hora_nueva_cita">
-                <input type="submit" value="Pedir cita" name="boton_pedir_cita" id="boton_pedir_cita">
+                <div class="contenido">
+                    <label for="mascota_select">¿Para quien es la cita?</label>
+                    <select name="id_mascota_nueva_cita" id="mascota_select" require>
+                        <?php foreach ($array_datos_mascota as $mascota): ?>
+                            <option value="<?php echo $mascota['id_mascota']; ?>">
+                                <?php echo $mascota['nombre'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="date" name="calendario" id="calendario">
+                    <input type="time" name="hora_nueva_cita" id="hora_nueva_cita">
+                </div>
+
+                <input type="submit" value="Pedir cita" name="boton_pedir_cita" id="boton_pedir_cita" class="boton_pedir_cita">
             </form>
         </div>
         <div class="contenedorInformacion">
@@ -44,9 +47,9 @@
                 <h2>Mis mascotas</h2>
                 <div class="tarjetaMascotas">
                     <?php foreach ($array_datos_mascota as $fila): ?>
-                    <h2>Nombre: <?php echo $fila['nombre'] ?></h2>
-                    <h2>Especie: <?php echo $fila['especie'] ?></h2>
-                    <h2>Edad: <?php echo $edad ?></h2>
+                        <h2>Nombre: <?php echo $fila['nombre'] ?></h2>
+                        <h2>Especie: <?php echo $fila['especie'] ?></h2>
+                        <h2>Edad: <?php echo $edad ?></h2>
                     <?php endforeach; ?>
                 </div>
                 <input class="botonAñadirMascota" type="button" value="Añadir Mascota" id="botonAñadirMascota" name="botonAñadirMascota"> <!-- Este hacerlo con jquery para esconder el formulario-->
@@ -66,8 +69,8 @@
                     <div class="tarjetaProximaCita tarjeta">
                         <div class="diaHora">
                             <?php foreach ($array_proximas as $cita): ?>
-                            <h3><?php echo $cita['fecha'] ?></h3>
-                            <h4><?php echo $cita['hora'] ?></h4>
+                                <h3><?php echo $cita['fecha'] ?></h3>
+                                <h4><?php echo $cita['hora'] ?></h4>
                             <?php endforeach; ?>
                         </div>
                         <div class="CitaInformacion">
@@ -82,13 +85,13 @@
                     <div class="tarjetaCitaAnterior tarjeta">
                         <div class="diaHora">
                             <?php foreach ($array_anteriores as $cita): ?>
-                            <h3><?php echo $cita['fecha'] ?></h3>
-                            <h4><?php echo $cita['hora'] ?></h4>
+                                <h3><?php echo $cita['fecha'] ?></h3>
+                                <h4><?php echo $cita['hora'] ?></h4>
                             <?php endforeach; ?>
                         </div>
                         <div class="CitaInformacion">
                             <?php foreach ($array_anteriores as $cita): ?>
-                            <h2>Paciente: <?php echo $cita['nombre'] ?></h2>
+                                <h2>Paciente: <?php echo $cita['nombre'] ?></h2>
                             <?php endforeach; ?>
                         </div>
                     </div>

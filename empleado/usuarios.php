@@ -46,14 +46,14 @@
                 <div class="formulario_nuevo_usuario">
                     <form action="" method="post">
                         <h3>DATOS NUEVO USUARIO</h3>
-                        <input type="text" name="nombre_nuevo_usuario" id="nombre_nuevo_usuario" placeholder="Nombre">
-                        <input type="text" name="apellido_nuevo_usuario" id="apellido_nuevo_usuario" placeholder="apellido">
-                        <input type="tel" name="telefono_nuevo_usuario" id="telefono_nuevo_usuario" placeholder="telefono +34600000000">
-                        <input type="mail" name="mail_nuevo_usuario" id="mail_nuevo_usuario" placeholder="mail@correo.com">
-                        <input type="text" name="direccion_nuevo_usuario" id="direccion_nuevo_usuario" placeholder="C/ejemplo 5">
-                        <input type="text" name="usuario_nuevo_usuario" id="usuario_nuevo_usuario" placeholder="Usuario (Para login)">
-                        <input type="text" name="contraseña_nuevo_usuario" id="contraseña_nuevo_usuario" placeholder="Generar contraseña">
-                        <input type="submit" value="Añadir" name="boton_añadir_nuevo_usuario" id="boton_añadir_nuevo_usuario">
+                        <input type="text" name="nombre_nuevo_usuario" id="nombre_nuevo_usuario" placeholder="Nombre" required>
+                        <input type="text" name="apellido_nuevo_usuario" id="apellido_nuevo_usuario" placeholder="apellido" required>
+                        <input type="tel" name="telefono_nuevo_usuario" id="telefono_nuevo_usuario" placeholder="telefono +34600000000" required>
+                        <input type="mail" name="mail_nuevo_usuario" id="mail_nuevo_usuario" placeholder="mail@correo.com" required>
+                        <input type="text" name="direccion_nuevo_usuario" id="direccion_nuevo_usuario" placeholder="C/ejemplo 5" required>
+                        <input type="text" name="usuario_nuevo_usuario" id="usuario_nuevo_usuario" placeholder="Usuario (Para login)" required>
+                        <input type="text" name="contraseña_nuevo_usuario" id="contraseña_nuevo_usuario" placeholder="Generar contraseña" required>
+                        <input type="submit" value="Añadir" name="boton_añadir_nuevo_usuario" id="boton_añadir_nuevo_usuario" required>
                     </form>
                 </div>
 

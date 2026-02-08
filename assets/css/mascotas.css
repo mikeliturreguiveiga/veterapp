@@ -145,7 +145,8 @@ form h3 {
     text-align: center;
 }
 
-.formulario_nueva_mascota form input:last-of-type:hover , .formulario_editar_mascota form input:last-of-type:hover{
+.formulario_nueva_mascota form input:last-of-type:hover , 
+.formulario_editar_mascota form input:last-of-type:hover{
     cursor: pointer;
 }
 

@@ -44,13 +44,6 @@
 }
 
 .contenedorCalendario {
-    background-color: rgb(44, 44, 207);
-    width: 60%;
-    border-radius: 15px;
-    padding: 0.8em;
-    display: flex;
-    justify-content: center;
-    box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
     display: none;
     display: flex;
     justify-content: center;
@@ -60,12 +53,43 @@
 .contenedorCalendario .formulario_nueva_cita {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorCalendario .formulario_nueva_cita .contenido{
+    background-color: rgb(44, 44, 207);
+    width: 100%;
+    border-radius: 15px;
+    padding: 0.8em;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.contenedorCalendario .formulario_nueva_cita .contenido input{
     color: white;
 }
 
 .contenedorCalendario .formulario_nueva_cita .boton_pedir_cita{
-    all: unset;
-    background-color: white !important;
+    all:unset;
+    background-color: rgb(44, 44, 207);
+    color: rgb(249, 249, 249);
+    margin: 0.7em;
+    padding: 0.5em;
+    border-radius: 15px;
+    text-shadow: 1px 1px 4px rgba(184, 184, 184, 0.4);
+    width: 40%;
+    text-align: center;
 }
 
 .contenedorInformacion {

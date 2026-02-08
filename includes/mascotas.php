@@ -56,14 +56,26 @@ if (isset($_POST['boton_añadir_nueva_mascota']) && !empty($_POST['nombre_nueva_
     
 }
 //------------------------------CODIGO EDITAR MASCOTAS----------------------------------
+// Buscamos los datos de la mascota seleccionada para editar y hago un array solo con los datos de esa mascota
+$mascota_a_editar = null;
+if (isset($_POST['id_mascota_editar']) && !empty($_POST['id_mascota_editar'])) {
+    foreach ($array_datos_mascotas as $mascota) {
+        if ($mascota['id_mascota'] == $_POST['id_mascota_editar']) {
+            $mascota_a_editar = $mascota;
+            break;
+        }
+    }
+}
+
 
 if (isset($_POST['boton_editar_mascota'])) {
     $id = $_POST['id_mascota_editar'];
     $nombre = $_POST['nombre_editar_mascota'];
     $especie = $_POST['especie_editar_mascota'];
     $raza = $_POST['raza_editar_mascota'];
+    $sexo = $_POST['sexo_editar_mascota'];
     $fecha_nacimiento = $_POST['fecha_nacimiento_editar_mascota'];
-    $caracteristicas = $_POST['caracteristicas_editar_mascota'];
+    $caracteristicas = $_POST['caracteristicas_fisicas_editar_mascota'];
     $peso = $_POST['peso_editar_mascota'];
     $dieta = $_POST['dieta_editar_mascota'];
     $esterilizado = $_POST['esterilizado_editar_mascota'];
@@ -75,10 +87,11 @@ if (isset($_POST['boton_editar_mascota'])) {
     if (!empty($id)) {
         $consulta_editar_mascota = "UPDATE mascotas SET 
                         nombre = '$nombre', 
-                        especie = '$especie', 
+                        especie = '$especie',
+                        sexo = '$sexo', 
                         raza = '$raza', 
-                        fecha_nacimieto = '$fecha_nacimiento', 
-                        caracteristicas = '$caracteristicas',
+                        fecha_nacimiento = '$fecha_nacimiento', 
+                        caracteristicas_fisicas = '$caracteristicas',
                         peso = '$peso',
                         dieta = '$dieta',
                         esterilizado = '$esterilizado',

@@ -8,6 +8,8 @@ while($fila = $resultado_consulta_usuarios->fetch_assoc()){
 }
 
 //------------------------------CODIGO AÑADIR USUARIO----------------------------------
+$comprobacion = true;//Siempre comprobamos que no haya ningún campo vacío
+
 if (isset($_POST['boton_añadir_nuevo_usuario'])) {
     $nombre = $_POST['nombre_nuevo_usuario'];
     $apellidos = $_POST['apellido_nuevo_usuario'];
@@ -15,30 +17,49 @@ if (isset($_POST['boton_añadir_nuevo_usuario'])) {
     $mail = $_POST['mail_nuevo_usuario'];
     $direccion = $_POST['direccion_nuevo_usuario'];
     $usuario = $_POST['usuario_nuevo_usuario'];;
-    $contraseña = $_POST['contraseña_nuevo_usuario'];;
-    $consulta_insertar_usuario = "INSERT INTO usuarios 
+    $contraseña = $_POST['contraseña_nuevo_usuario'];
+
+    if (empty($nombre) 
+        || empty($apellidos)
+        || empty($telefono)
+        || empty($mail)
+        || empty($direccion)
+        || empty($usuario)
+        || empty($contraseña)) 
+        {
+        $comprobacion = false;
+        
+    }
+
+    if ($comprobacion) { //si no hay campos vacíos se ejecuta todo
+        $consulta_insertar_usuario = "INSERT INTO usuarios 
                                     (nombre, apellidos, telefono, correo_electronico, direccion)
                                     VALUES 
                                     ('$nombre', '$apellidos', '$telefono', '$mail',
                                      '$direccion')";
-    $ejecutamos_consulta_insertar_usuario = $conexion->query($consulta_insertar_usuario);
+        $ejecutamos_consulta_insertar_usuario = $conexion->query($consulta_insertar_usuario);
 
-    if($ejecutamos_consulta_insertar_usuario){
-        $id_nuevo_usuario = $conexion->insert_id;//la función insert_id -> te devuelve el ultimo id de la última insercción
-        $consulta_login = "INSERT INTO tipo_usuarios_contraseñas 
+        if($ejecutamos_consulta_insertar_usuario){
+            $id_nuevo_usuario = $conexion->insert_id;//la función insert_id -> te devuelve el ultimo id de la última insercción
+            $consulta_login = "INSERT INTO tipo_usuarios_contraseñas 
                             (id_usuario, id_empleado, usuario, contraseña)
                             VALUES
                             ('$id_nuevo_usuario', NULL, '$usuario', '$contraseña')";
-        $ejecutamos_inserccion_de_login = $conexion->query($consulta_login);
-        if ($ejecutamos_inserccion_de_login) {
+            $ejecutamos_inserccion_de_login = $conexion->query($consulta_login);
+            if ($ejecutamos_inserccion_de_login) {
             echo "<script>
                 alert('Usuario añadido con éxito.');
                 window.location.href = 'usuarios.php'; 
                 </script>";
+            }
         }
+    }else{
+        echo "<script>
+                alert('Usuario no añadido por falta de campos por rellenar.');
+                window.location.href = 'usuarios.php'; 
+                </script>";
     }
-
-    
+ 
 }
 //------------------------------CODIGO EDITAR USUARIO----------------------------------
 
