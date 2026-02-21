@@ -48,18 +48,6 @@
                         </tr>
                         <?php endforeach; ?>
                     </table>
-                    <!-- Codigo PHP paginación  -->
-                    <div class="controles_paginacion">
-                            <?php if ($pagina_pasadas > 1): ?>
-                                <a href="?p=<?php echo $pagina_pasadas - 1; ?>" class="boton_pagina">Anterior</a>
-                            <?php endif; ?>
-
-                            <span class="info_num_pagina">Página <?php echo $pagina_pasadas ?></span>
-
-                            <?php if (count($agendaCitasPasadas) == $resultados_por_pagina): ?>
-                                <a href="?p=<?php echo $pagina_pasadas + 1; ?>" class="boton_pagina">Siguiente</a>
-                            <?php endif; ?>
-                        </div>
                 </div>
             </div>
             <div class="contenedorCitasHoy contenedorDeTarjetas">
@@ -82,18 +70,6 @@
                         </tr>
                         <?php endforeach; ?>
                     </table>
-                    <!-- Codigo PHP paginación  -->
-                    <div class="controles_paginacion">
-                            <?php if ($pagina_hoy > 1): ?>
-                                <a href="?p=<?php echo $pagina_hoy - 1; ?>" class="boton_pagina">Anterior</a>
-                            <?php endif; ?>
-
-                            <span class="info_num_pagina">Página <?php echo $pagina_hoy ?></span>
-
-                            <?php if (count($agendaCitasPasadas) == $resultados_por_pagina): ?>
-                                <a href="?p=<?php echo $pagina_hoy + 1; ?>" class="boton_pagina">Siguiente</a>
-                            <?php endif; ?>
-                        </div>
                 </div>
             </div>
             <div class="contenedorProximasCitas contenedorDeTarjetas">
@@ -116,18 +92,6 @@
                         </tr>
                         <?php endforeach; ?>
                     </table>
-                    <!-- Codigo PHP paginación  -->
-                    <div class="controles_paginacion">
-                            <?php if ($pagina_proximas > 1): ?>
-                                <a href="?p=<?php echo $pagina_proximas - 1; ?>" class="boton_pagina">Anterior</a>
-                            <?php endif; ?>
-
-                            <span class="info_num_pagina">Página <?php echo $pagina_proximas ?></span>
-
-                            <?php if (count($agendaCitasPasadas) == $resultados_por_pagina): ?>
-                                <a href="?p=<?php echo $pagina_proximas + 1; ?>" class="boton_pagina">Siguiente</a>
-                            <?php endif; ?>
-                        </div>
                 </div>
             </div>
         </div>

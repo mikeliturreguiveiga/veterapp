@@ -36,6 +36,17 @@
                         <?php endforeach; ?>
                     </select>
                     <input type="date" name="calendario" id="calendario">
+                        <!--   CON QUE PROFESIONAL  -->
+                        <label for="empleado_select">¿Con que profesional deseas la cita?</label>
+                        <select name="id_empleado" id="empleado_select" require>
+                        <?php foreach ($array_datos_empleado as $empleado): ?>
+                            <option value="<?php echo $empleado['id_empleado']; ?>">
+                                <?php  echo $empleado['nombre'] . " " . $empleado['apellidos']?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <!--   CON QUE PROFESIONAL  -->
+                    <label for="">¿A que hora quieres venir?</label>
                     <input type="time" name="hora_nueva_cita" id="hora_nueva_cita">
                 </div>
 

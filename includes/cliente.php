@@ -4,23 +4,6 @@ $id_logeado = $_SESSION['id'];
 $fecha_hoy = date('Y-m-d');
 $hora_hoy = date('H:i:s');
 
-//-------------------------------CODIGO AÑADIR CITA-------------------------------
-    if (isset($_POST['boton_pedir_cita'])) {
-        $id_mascota = $_POST['id_mascota_nueva_cita'];
-        $fecha = $_POST['calendario'];
-        $hora = $_POST['hora_nueva_cita'];
-        $consulta_pedir_cita = "INSERT INTO citas (id_usuario, id_mascota, fecha, hora)
-                                VALUES ('$id_logeado', '$id_mascota', '$fecha', '$hora')";
-
-        $ejecucion_consulta = $conexion->query($consulta_pedir_cita);
-
-        if($ejecucion_consulta){
-            echo "<script>
-                    alert('Cita añadida.');
-                    window.location.href = 'cliente.php'; 
-                  </script>";
-        }
-    }
 //----------------CODIGO PARA OBTENER LAS MASCOTAS DEL DUEÑO LOGUEADO------------------------
 $consulta_mascotas_de_logeado = "SELECT * FROM mascotas WHERE id_usuario = '$id_logeado'";
 $resultado_consulta_mascotas_de_logeado = $conexion->query($consulta_mascotas_de_logeado);
@@ -34,6 +17,36 @@ while($fila = $resultado_consulta_mascotas_de_logeado->fetch_assoc()){
         $edad = $año_actual - $año_nacimiento;
     }
 }
+
+//---------------------------------CODIGO CON QUE PROFESIONAL SE COGE LA CITA---------------------
+$consulta_empleado_cita = "SELECT * FROM empleados";
+$resultado_consulta_empleado_cita = $conexion->query($consulta_empleado_cita);
+$array_datos_empleado = array();
+
+while($fila = $resultado_consulta_empleado_cita->fetch_assoc()){
+    $array_datos_empleado[] = $fila;
+}
+
+//-------------------------------CODIGO AÑADIR CITA-------------------------------
+    if (isset($_POST['boton_pedir_cita'])) {
+        $id_mascota = $_POST['id_mascota_nueva_cita'];
+        $id_empleado = $_POST['id_empleado'];
+        $fecha = $_POST['calendario'];
+        $hora = $_POST['hora_nueva_cita'];
+        $consulta_pedir_cita = "INSERT INTO citas (id_usuario, id_empleado, id_mascota, fecha, hora)
+                                VALUES ('$id_logeado', '$id_empleado', '$id_mascota', '$fecha', '$hora')";
+
+        $ejecucion_consulta = $conexion->query($consulta_pedir_cita);
+
+        if($ejecucion_consulta){
+            echo "<script>
+                    alert('Cita añadida.');
+                    window.location.href = 'cliente.php'; 
+                  </script>";
+        }
+    }
+
+
     
 //---------------------------------CODIGO CITAS CLIENTE---------------------------
 $consulta_cita_cliente = "SELECT * FROM citas 

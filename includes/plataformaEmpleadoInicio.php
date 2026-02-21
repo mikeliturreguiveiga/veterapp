@@ -1,6 +1,9 @@
 <?php
     //------------------------------------CODIGO PAGINADO DE TABLAS----------------------------------------
-        $resultados_por_pagina = 5; //Defino el numero máximo de filas en la tabla
+    session_start();
+    $id_empleado = $_SESSION['id'];
+    
+    $resultados_por_pagina = 5; //Defino el numero máximo de filas en la tabla
 
         //Capturo la pagina actual de la URL
         $pagina_pasadas = isset($_GET['pp']) ? (int)$_GET['pp'] : 1;
@@ -35,7 +38,7 @@
         //Separamos en diferentes arrays los datos de citas por fechas
 
         //PARA LAS PASADAS
-        $consultaPasadas = $consulta . " WHERE C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_pasadas";
+        $consultaPasadas = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_pasadas";
 
         $resultadoConsultaPasadas = $conexion->query($consultaPasadas);
 
@@ -46,7 +49,7 @@
         }
 
         //PARA LAS DE HOY
-        $consultaHoy = $consulta . " WHERE C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_hoy";
+        $consultaHoy = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_hoy";
 
         $resultadoConsultaHoy = $conexion->query($consultaHoy);
 
@@ -57,7 +60,7 @@
         }
 
         //PARA LAS PASADAS
-        $consultaProximas = $consulta . " WHERE C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_proximas";
+        $consultaProximas = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_proximas";
 
         $resultadoConsultaProximas = $conexion->query($consultaProximas);
 
@@ -79,7 +82,7 @@
                 --  Uno Citas con Usuarios
                 INNER JOIN 
                 usuarios U ON C.id_usuario = U.id_usuario 
-                WHERE C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
+                WHERE C.id_empleado = $id_empleado AND C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
 
         //PARA FILTRAR SOLO LAS DE HOY
 
@@ -109,7 +112,7 @@
                 usuarios U ON C.id_usuario = U.id_usuario 
                 INNER JOIN 
                 mascotas M ON C.id_mascota = M.id_mascota
-                WHERE C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
+                WHERE C.id_empleado = $id_empleado AND C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
 
         //PARA FILTRAR SOLO LAS DE HOY
 
