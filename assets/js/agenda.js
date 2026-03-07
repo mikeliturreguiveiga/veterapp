@@ -3,29 +3,41 @@
 $(document).ready(function () {
   $('.anteriores').on('click', function () {
     $('.info_hoy').hide();
+    $('.controles-paginacion_hoy').hide();
     $('.info_proximas').hide();
+    $('.controles-paginacion_proximas').hide();
     $('.formulario_nueva_cita').hide();
     $('.info_pasada').show();
+    $('.controles-paginacion_pasadas').show();
   });
 
   $('.proximas').on('click', function () {
     $('.info_hoy').hide();
+    $('.controles-paginacion_hoy').hide();
     $('.info_pasada').hide();
+    $('.controles-paginacion_pasadas').hide();
     $('.formulario_nueva_cita').hide();
     $('.info_proximas').show();
+    $('.controles-paginacion_proximas').show();
   });
 
   $('.hoy').on('click', function () {
     $('.info_pasada').hide();
+    $('.controles-paginacion_pasadas').hide();
     $('.info_proximas').hide();
+    $('.controles-paginacion_proximas').hide();
     $('.formulario_nueva_cita').hide();
     $('.info_hoy').show();
+    $('.controles-paginacion_hoy').show();
   });
 
   $('.boton_añadir_cita').on('click', function () {
     $('.info_pasada').hide();
+    $('.controles-paginacion_pasadas').hide();
     $('.info_proximas').hide();
+    $('.controles-paginacion_proximas').hide();
     $('.info_hoy').hide();
+    $('.controles-paginacion_hoy').hide();
     $('.formulario_nueva_cita').show();
   });
 

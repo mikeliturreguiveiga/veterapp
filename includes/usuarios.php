@@ -1,11 +1,21 @@
 <?php
+//-----------------------------------------CODIGO PAGINADO-----------------------------------------
+    $resultados_por_pagina = 8;
+
+    //capturamos la página actual
+    $pagina = isset($_GET['p']) ? (int)$_GET['p'] : 1;
+
+    //calculamos el punto inicio para el SQL
+    $inicio = (max(1, $pagina) - 1) * $resultados_por_pagina;
+    if ($pagina < 1) $pagina = 1;
+    $inicio = ($pagina - 1) * $resultados_por_pagina;
 //------------------------------CODIGO TABLA DE VER USUARIOS----------------------------------
-$consulta_usuarios = "SELECT * FROM usuarios";
-$resultado_consulta_usuarios = $conexion->query($consulta_usuarios);
-$array_datos_usuarios = array();
-while($fila = $resultado_consulta_usuarios->fetch_assoc()){
-    $array_datos_usuarios[] = $fila;
-}
+    $consulta_usuarios = "SELECT * FROM usuarios LIMIT $resultados_por_pagina OFFSET $inicio";
+    $resultado_consulta_usuarios = $conexion->query($consulta_usuarios);
+    $array_datos_usuarios = array();
+    while($fila = $resultado_consulta_usuarios->fetch_assoc()){
+        $array_datos_usuarios[] = $fila;
+    }
 
 //------------------------------CODIGO AÑADIR USUARIO----------------------------------
 $comprobacion = true;//Siempre comprobamos que no haya ningún campo vacío
@@ -117,4 +127,6 @@ if (isset($_POST['boton_eliminar_usuario'])) {
         }
     }
 }
+
+
 ?>

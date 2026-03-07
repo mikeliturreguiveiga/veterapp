@@ -1,6 +1,16 @@
 <?php
+//-----------------------------------------CODIGO PAGINADO-----------------------------------------
+    $resultados_por_pagina = 8;
+
+    //capturamos la página actual
+    $pagina = isset($_GET['p']) ? (int)$_GET['p'] : 1;
+
+    //calculamos el punto inicio para el SQL
+    $inicio = (max(1, $pagina) - 1) * $resultados_por_pagina;
+    if ($pagina < 1) $pagina = 1;
+    $inicio = ($pagina - 1) * $resultados_por_pagina;
 //------------------------------CODIGO TABLA DE VER MASCOTAS----------------------------------
-$consulta_mascotas = "SELECT * FROM mascotas";
+$consulta_mascotas = "SELECT * FROM mascotas LIMIT $resultados_por_pagina OFFSET $inicio";
 $resultado_consulta_mascotas = $conexion->query($consulta_mascotas);
 $array_datos_mascotas = array();
 while($fila = $resultado_consulta_mascotas->fetch_assoc()){

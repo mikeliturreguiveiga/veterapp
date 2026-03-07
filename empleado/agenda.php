@@ -51,6 +51,7 @@
                             <td><?php echo $cita['especie']  ?></td>
                         </tr>
                     <?php endforeach; ?>
+                   
                 </table>
                 <table class="info_pasada">
                     <tr>
@@ -72,6 +73,7 @@
                             <td><?php echo $cita['especie']  ?></td>
                         </tr>
                     <?php endforeach; ?>
+                  
                 </table>
                 <table class="info_proximas">
                     <tr>
@@ -93,41 +95,51 @@
                             <td><?php echo $cita['especie']  ?></td>
                         </tr>
                     <?php endforeach; ?>
+                
                 </table>
                 <div class="formulario_nueva_cita">
-                    <form  action="" method="post">
-                            <h3>DATOS NUEVA CITA</h3>
-                            <select name="id_usuario" id="select_cliente">
-                                <option value="">Selecciona cliente:</option>
-                                <?php foreach ($clientes as $c): ?>
-                                    <option value="<?= $c['id_usuario'] ?>"><?= $c['nombre'] . " " . $c['apellidos'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <select name="id_mascota" id="select_mascota" disabled>
-                                <?php foreach ($mascota as $m): ?>
-                                    <option value=""><?= $m['nombre'] . " " ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <label for="">Selecciona la fecha:</label>
-                            <input type="date" name="fecha_añadir" id="fecha_añadir">
-                            <label for="">Introduce la hora:</label>
-                            <input type="time" name="hora_añadir" id="hora_añadir">
-                            <input type="text" name="lesion" id="lesion" placeholder="Describe la dolencia:">
-                            <input type="submit" value="añadir" name="añadir" id="añadir">
+                    <form action="" method="post">
+                        <h3>DATOS NUEVA CITA</h3>
+                        <select name="id_usuario" id="select_cliente">
+                            <option value="">Selecciona cliente:</option>
+                            <?php foreach ($clientes as $c): ?>
+                                <option value="<?= $c['id_usuario'] ?>"><?= $c['nombre'] . " " . $c['apellidos'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <select name="id_mascota" id="select_mascota" disabled>
+                            <?php foreach ($mascota as $m): ?>
+                                <option value=""><?= $m['nombre'] . " " ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <label for="">Selecciona la fecha:</label>
+                        <input type="date" name="fecha_añadir" id="fecha_añadir">
+                        <label for="">Introduce la hora:</label>
+                        <input type="time" name="hora_añadir" id="hora_añadir">
+                        <input type="text" name="lesion" id="lesion" placeholder="Describe la dolencia:">
+                        <input type="submit" value="añadir" name="añadir" id="añadir">
                     </form>
                 </div>
                 <!-- codigo paginacion        No funciona bien-->
+                <!--
                 <div class="controles-paginacion">
-                    <?php if ($pagina_actual > 1): ?>
-                        <a href="?p=<?php echo $pagina_actual - 1; ?>" class="boton_pagina"> &laquo; Anterior </a>
-                    <?php endif; ?>
+                    <?php //if ($pagina_actual > 1): 
+                    ?>
+                        <a href="?p=<?php //echo $pagina_actual - 1; 
+                                    ?>" class="boton_pagina"> &laquo; Anterior </a>
+                    <?php //endif; 
+                    ?>
 
-                    <span class="info-pag">Página <?php echo $pagina_actual; ?></span>
+                    <span class="info-pag">Página <?php //echo $pagina_actual; 
+                                                    ?></span>
 
-                    <?php if (count($agendaCitasPasadas) == $resultados_por_pagina): ?>
-                        <a href="?p=<?php echo $pagina_actual + 1; ?>" class="boton_pagina"> Siguiente &raquo; </a>
-                    <?php endif; ?>
+                    <?php //if (count($agendaCitasPasadas) == $resultados_por_pagina): 
+                    ?>
+                        <a href="?p=<?php //echo $pagina_actual + 1; 
+                                    ?>" class="boton_pagina"> Siguiente &raquo; </a>
+                    <?php //endif; 
+                    ?>
                 </div>
+                    -->
                 <div class="formulario_panel">
                     <!-- <label for="">¿Que ver?</label> -->
                     <button class="anteriores" type="submit" value="Ver citas anteriores" name="anteriores" id="anteriores">Ver citas anteriores</button>

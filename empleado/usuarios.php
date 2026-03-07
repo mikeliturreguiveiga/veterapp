@@ -42,6 +42,19 @@
                         </tr>
                     <?php endforeach; ?>
                 </table>
+                 <!--    PAGINADO   -->
+                    <div class="controles-paginacion">
+                        <?php if ($pagina > 1): ?>
+                            <a href="?p=<?php echo $pagina - 1; ?>" class="boton_pagina"> &laquo; Anterior </a>
+                        <?php endif; ?>
+
+                        <span class="info-pag">Página <?php echo $pagina; ?></span>
+
+                        <?php if (count($array_datos_usuarios) == $resultados_por_pagina): ?>
+                            <a href="?p=<?php echo $pagina + 1; ?>" class="boton_pagina"> Siguiente &raquo; </a>
+                        <?php endif; ?>
+                    </div>
+                    <!--    PAGINADO   -->
 
                 <div class="formulario_nuevo_usuario">
                     <form action="" method="post">

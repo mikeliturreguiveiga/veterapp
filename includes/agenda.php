@@ -1,15 +1,16 @@
 <?php
-//-----------------------------------------CODIGO PAGINADO---------------------------------------
+//-----------------------------------------CODIGO PAGINADO-----------------------------------------
     $resultados_por_pagina = 6;
 
 //capturamos la página actual
-    $pagina_actual = isset($_GET['p']) ? (int)$_GET['p'] : 1;
-    if ($pagina_actual < 1) {
-        $pagina_actual = 1;
-    }
+    $pagina_hoy = isset($_GET['ph']) ? (int)$_GET['ph'] : 1;
+    $pagina_anteriores = isset($_GET['pa']) ? (int)$_GET['pa'] : 1;
+    $pagina_proximas = isset($_GET['pp']) ? (int)$_GET['pp'] : 1;
 
 //calculamos el punto inicio para el SQL
-    $inicio = ($pagina_actual - 1) * $resultados_por_pagina;
+    $inicio_hoy = (max(1, $pagina_hoy) - 1) * $resultados_por_pagina;
+    $inicio_anteriores = (max(1, $pagina_anteriores) - 1) * $resultados_por_pagina;
+    $inicio_proximas = (max(1, $pagina_proximas) - 1) * $resultados_por_pagina;
 
 
 //---------------------------CODIGO PARA LA PREVISUALIZACION DE LA AGENDA------------------------------
@@ -23,10 +24,8 @@
                         M.nombre AS nombre_mascota
                         FROM
                         citas C
-                        --  Uno Citas con Usuarios
                         INNER JOIN 
                         usuarios U ON C.id_usuario = U.id_usuario
-                        --  Uno Citas con Mascotas
                         INNER JOIN
                         mascotas M ON C.id_mascota = M.id_mascota ";
 
@@ -34,7 +33,7 @@
 //Separamos en diferentes arrays los datos de citas por fechas
 
 //PARA LAS PASADAS
-    $consultaPasadas = $consulta . " WHERE C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio";
+    $consultaPasadas = $consulta . " WHERE C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_anteriores";
 
     $resultadoConsultaPasadas = $conexion->query($consultaPasadas);
 
@@ -45,7 +44,7 @@
     }
 
 //PARA LAS DE HOY
-    $consultaHoy = $consulta . " WHERE C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio";
+    $consultaHoy = $consulta . " WHERE C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_hoy";
 
     $resultadoConsultaHoy = $conexion->query($consultaHoy);
 
@@ -56,7 +55,7 @@
     }
 
 //PARA LAS PRÓXIMAS
-    $consultaProximas = $consulta . " WHERE C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio";
+    $consultaProximas = $consulta . " WHERE C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_proximas";
 
     $resultadoConsultaProximas = $conexion->query($consultaProximas);
 
@@ -93,13 +92,13 @@
         while ($fila = $resultado_comprobacion_cita->fetch_assoc()) {
             $resultado_cita[] = $fila;
         }
-
-
+        
         if ($resultado_comprobacion_cita->num_rows > 0) { //si existe hacemos lo siguiente
             echo "<script>alert('Error: Ya hay una cita a esa hora.'); window.history.back();</script>";
         }else{ //Si no existe hacemos esto
-            $consulta_insertar_nueva_cita = "INSERT INTO citas (id_usuario, id_mascota, lesion, fecha, hora) 
-                                            VALUES ($id_usuario, $id_mascota, '$lesion', '$fecha', '$hora')";
+            $id_empleado = $_SESSION['id'];
+            $consulta_insertar_nueva_cita = "INSERT INTO citas (id_usuario, id_empleado, id_mascota, lesion, fecha, hora) 
+                                            VALUES ($id_usuario, $id_empleado, $id_mascota, '$lesion', '$fecha', '$hora')";
 
             $añadimos_cita = $conexion->query($consulta_insertar_nueva_cita);
 
