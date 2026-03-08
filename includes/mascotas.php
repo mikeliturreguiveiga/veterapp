@@ -1,28 +1,69 @@
 <?php
+//------------------------------------------EXPORTADO FPDF----------------------------------------
+include("../includes/fpdf/fpdf.php");
+
+if (isset($_POST['exportar_PDF'])) {
+    if (ob_get_length()) ob_end_clean(); //limpiamos el buffer 
+    ///** @var FPDF $pdf */
+    $pdf = new FPDF('L', 'mm', 'A4');
+    $pdf->AddPage();
+    $pdf->SetFont("Arial", "B", 10);
+
+    $pdf->Cell(30, 10, 'Nombre', 1);
+    $pdf->Cell(20, 10, 'Especie', 1);
+    $pdf->Cell(30, 10, iconv('UTF-8', 'windows-1252', 'Raza'), 1);
+    $pdf->Cell(20, 10, iconv('UTF-8', 'windows-1252', 'Sexo'), 1);
+    $pdf->Cell(40, 10, iconv('UTF-8', 'windows-1252', 'F.N.'), 1);
+    $pdf->Cell(40, 10, iconv('UTF-8', 'windows-1252', 'Características f.'), 1);
+    $pdf->Cell(40, 10, iconv('UTF-8', 'windows-1252', 'Exámenes'), 1);
+    $pdf->Cell(10, 10, iconv('UTF-8', 'windows-1252', 'Peso'), 1);
+    $pdf->Cell(30, 10, iconv('UTF-8', 'windows-1252', 'Vacunas'), 1);
+    $pdf->Ln();
+
+    $pdf->SetFont("Arial", "", 10);
+
+    $consulta_completa = "SELECT * FROM mascotas";
+    $resultado_consulta_completa = $conexion->query($consulta_completa);
+
+    while ($fila = $resultado_consulta_completa->fetch_assoc()) {
+        $pdf->Cell(30, 10, iconv('UTF-8', 'windows-1252', $fila['nombre'] ?? ''), 1);
+        $pdf->Cell(20, 10, iconv('UTF-8', 'windows-1252', $fila['especie'] ?? ''), 1);
+        $pdf->Cell(30, 10, ($fila['raza']), 1);
+        $pdf->Cell(20, 10, ($fila['sexo']), 1);
+        $pdf->Cell(40, 10, iconv('UTF-8', 'windows-1252', $fila['fecha_nacimiento'] ?? ''), 1);
+        $pdf->Cell(40, 10, iconv('UTF-8', 'windows-1252', $fila['caracteristicas_fisicas'] ?? ''), 1);
+        $pdf->Cell(40, 10, iconv('UTF-8', 'windows-1252', $fila['examenes'] ?? ''), 1);
+        $pdf->Cell(10, 10, iconv('UTF-8', 'windows-1252', $fila['peso'] ?? ''), 1);
+        $pdf->Cell(30, 10, iconv('UTF-8', 'windows-1252', $fila['vacunas'] ?? ''), 1);
+        $pdf->Ln();
+    }
+    $pdf->Output();
+    exit;
+}
 //-----------------------------------------CODIGO PAGINADO-----------------------------------------
-    $resultados_por_pagina = 8;
+$resultados_por_pagina = 8;
 
-    //capturamos la página actual
-    $pagina = isset($_GET['p']) ? (int)$_GET['p'] : 1;
+//capturamos la página actual
+$pagina = isset($_GET['p']) ? (int)$_GET['p'] : 1;
 
-    //calculamos el punto inicio para el SQL
-    $inicio = (max(1, $pagina) - 1) * $resultados_por_pagina;
-    if ($pagina < 1) $pagina = 1;
-    $inicio = ($pagina - 1) * $resultados_por_pagina;
+//calculamos el punto inicio para el SQL
+$inicio = (max(1, $pagina) - 1) * $resultados_por_pagina;
+if ($pagina < 1) $pagina = 1;
+$inicio = ($pagina - 1) * $resultados_por_pagina;
 //------------------------------CODIGO TABLA DE VER MASCOTAS----------------------------------
 $consulta_mascotas = "SELECT * FROM mascotas LIMIT $resultados_por_pagina OFFSET $inicio";
 $resultado_consulta_mascotas = $conexion->query($consulta_mascotas);
 $array_datos_mascotas = array();
-while($fila = $resultado_consulta_mascotas->fetch_assoc()){
+while ($fila = $resultado_consulta_mascotas->fetch_assoc()) {
     $array_datos_mascotas[] = $fila;
 }
 
 //------------------------------CODIGO AÑADIR MASCOTAS----------------------------------
 
-$consulta_usuarios = "SELECT * FROM usuarios";//ESTA COSULTA ES PARA QUE APAREZCA EN EL SELECT EL ID Y NOMBRE DEL USUARIO DUEÑO DE LA NUEVA MASCOTA
+$consulta_usuarios = "SELECT * FROM usuarios"; //ESTA COSULTA ES PARA QUE APAREZCA EN EL SELECT EL ID Y NOMBRE DEL USUARIO DUEÑO DE LA NUEVA MASCOTA
 $resultado_consulta_usuarios = $conexion->query($consulta_usuarios);
 $array_datos_usuarios = array();
-while($fila = $resultado_consulta_usuarios->fetch_assoc()){
+while ($fila = $resultado_consulta_usuarios->fetch_assoc()) {
     $array_datos_usuarios[] = $fila;
 }
 
@@ -41,9 +82,9 @@ if (isset($_POST['boton_añadir_nueva_mascota']) && !empty($_POST['nombre_nueva_
     $examenes = $_POST['examenes_nueva_mascota'];
     $tratamientos = $_POST['tratamientos_nueva_mascota'];
 
-    if ($esterilizado == "no") {//El profesional escribe si o no, pero en la base de datos es 0 1
+    if ($esterilizado == "no") { //El profesional escribe si o no, pero en la base de datos es 0 1
         $esterilizado = 0;
-    }else{
+    } else {
         $esterilizado = 1;
     }
 
@@ -56,14 +97,12 @@ if (isset($_POST['boton_añadir_nueva_mascota']) && !empty($_POST['nombre_nueva_
                                       '$vacunas', '$examenes', '$tratamientos')";
     $ejecutamos_consulta_insertar_mascota = $conexion->query($consulta_insertar_mascota);
 
-    if($ejecutamos_consulta_insertar_mascota){
+    if ($ejecutamos_consulta_insertar_mascota) {
         echo "<script>
             alert('Mascota añadido con éxito.');
             window.location.href = 'mascotas.php'; 
-            </script>";  
+            </script>";
     }
-
-    
 }
 //------------------------------CODIGO EDITAR MASCOTAS----------------------------------
 // Buscamos los datos de la mascota seleccionada para editar y hago un array solo con los datos de esa mascota
@@ -114,7 +153,7 @@ if (isset($_POST['boton_editar_mascota'])) {
 
         if ($ejecutar_consulta_editar_mascota) {
             echo "<script>alert('mascota actualizada'); window.location.href='mascotas.php';</script>";
-        }else{
+        } else {
             echo "<script>alert('No se puedo actualizar la mascota'); window.location.href='mascotas.php';</script>";
         }
     }
@@ -132,9 +171,8 @@ if (isset($_POST['boton_eliminar_mascota'])) {
 
         if ($ejecutar_consulta_borrar_datos_mascota) {
             echo "<script>alert('mascota eliminado'); window.location.href='mascotas.php';</script>";
-        }else{
+        } else {
             echo "<script>alert('No se puedo eliminar la mascota'); window.location.href='mascotas.php';</script>";
         }
     }
 }
-?>

@@ -61,6 +61,11 @@ body {
     text-align: center;
 }
 
+.contenedor_formulario {
+    display: flex;
+    flex-direction: row;
+}
+
 .contenedor_formulario input {
     all:unset;
     background-color: rgb(44, 44, 207);

@@ -117,6 +117,9 @@
                 <input type="button" value="Eliminar usuario" name="eliminar_usuario" id="eliminar_usuario" class="eliminar_usuario">
                 <input type="button" value="Editar usuario" name="editar_usuario" id="editar_usuario" class="editar_usuario">
                 <input type="button" value="Añadir usuario" name="añadir_usuario" id="añadir_usuario" class="añadir_usuario">
+                <form action="" method="post">
+                    <input type="submit" value="Exportar en PDF" name="exportar_PDF" id="exportar_PDF" class="exportar_PDF">
+                </form>
             </div>
 
         </div>

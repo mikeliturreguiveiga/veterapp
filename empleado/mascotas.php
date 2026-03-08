@@ -169,6 +169,9 @@
                 <input type="button" value="Eliminar mascotas" name="eliminar_mascota" id="eliminar_mascota" class="eliminar_mascota">
                 <input type="button" value="Editar mascotas" name="editar_mascota" id="editar_mascota" class="editar_mascota">
                 <input type="button" value="Añadir mascotas" name="añadir_mascota" id="añadir_mascota" class="añadir_mascota">
+                <form action="" method="post">
+                    <input type="submit" value="Exportar en PDF" name="exportar_PDF" id="exportar_PDF" class="exportar_PDF">
+                </form>
         </div>
     </div>
     <script src="../assets/js/mascotas.js"></script>
