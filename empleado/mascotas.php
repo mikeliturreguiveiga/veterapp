@@ -22,7 +22,8 @@
         <h2>MASCOTAS</h2>
         <div class="contenedorPanel">
             <div class="tarjeta panel_informacion">
-                <table class="tabla_mascotas" <?php if(isset($_POST['id_usuario_mascota_nueva']) || isset($_POST['id_mascota_borrar']) || isset($_POST['id_mascota_editar'])) echo 'style=display:none;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div?>>
+                <table class="tabla_mascotas" <?php if (isset($_POST['id_usuario_mascota_nueva']) || isset($_POST['id_mascota_borrar']) || isset($_POST['id_mascota_editar'])) echo 'style=display:none;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div
+                                                ?>>
                     <tr>
                         <th>Nombre</th>
                         <th>Especie</th>
@@ -36,6 +37,7 @@
                         <th>Vacunas</th>
                         <th>Exámenes</th>
                         <th>Tratamientos</th>
+                        <th>Imagen</th>
                     </tr>
                     <!--  Datos  -->
                     <?php foreach ($array_datos_mascotas as $dato):
@@ -53,23 +55,32 @@
                             <td><?php echo $dato['vacunas']  ?></td>
                             <td><?php echo $dato['examenes']  ?></td>
                             <td><?php echo $dato['tratamientos']  ?></td>
+                            <td><?php if (!empty($dato['foto'])): ?>
+                                    <img src="../assets/img/fotos-animales/<?php echo $dato['foto']; ?>"
+                                        alt="Foto de <?php echo $dato['nombre']; ?>"
+                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                                <?php else: ?>
+                                    <span>Sin foto</span>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
                 <!--    PAGINADO   -->
-                    <div class="controles-paginacion">
-                        <?php if ($pagina > 1): ?>
-                            <a href="?p=<?php echo $pagina - 1; ?>" class="boton_pagina"> &laquo; Anterior </a>
-                        <?php endif; ?>
+                <div class="controles-paginacion">
+                    <?php if ($pagina > 1): ?>
+                        <a href="?p=<?php echo $pagina - 1; ?>" class="boton_pagina"> &laquo; Anterior </a>
+                    <?php endif; ?>
 
-                        <span class="info-pag">Página <?php echo $pagina; ?></span>
+                    <span class="info-pag">Página <?php echo $pagina; ?></span>
 
-                        <?php if (count($array_datos_mascotas) == $resultados_por_pagina): ?>
-                            <a href="?p=<?php echo $pagina + 1; ?>" class="boton_pagina"> Siguiente &raquo; </a>
-                        <?php endif; ?>
-                    </div>
-                    <!--    PAGINADO   -->
-                <div class="formulario_nueva_mascota" <?php if(isset($_POST['id_usuario_mascota_nueva'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div?>>
+                    <?php if (count($array_datos_mascotas) == $resultados_por_pagina): ?>
+                        <a href="?p=<?php echo $pagina + 1; ?>" class="boton_pagina"> Siguiente &raquo; </a>
+                    <?php endif; ?>
+                </div>
+                <!--    PAGINADO   -->
+                <div class="formulario_nueva_mascota" <?php if (isset($_POST['id_usuario_mascota_nueva'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div
+                                                        ?>>
                     <form action="" method="post">
                         <h3>DATOS NUEVA MASCOTA</h3>
                         <label for="">De quien es la mascota:</label>
@@ -104,12 +115,13 @@
                                 <input type="text" name="tratamientos_nueva_mascota" id="tratamientos_nueva_mascota" placeholder="tratamientos">
                             </div>
                         </div>
-                        
+
                         <input type="submit" value="Añadir" name="boton_añadir_nueva_mascota" id="boton_añadir_nueva_mascota" class="confirmar_cambios">
                     </form>
                 </div>
 
-                <div class="formulario_editar_mascota"  <?php if(isset($_POST['id_mascota_editar'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div?>>
+                <div class="formulario_editar_mascota" <?php if (isset($_POST['id_mascota_editar'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div
+                                                        ?>>
                     <form action="" method="post">
                         <h3>EDITAR MASCOTA</h3>
                         <select name="id_mascota_editar" onchange="this.form.submit()">
@@ -145,7 +157,8 @@
                     </form>
                 </div>
 
-                <div class="formulario_borrar_mascota" <?php if(isset($_POST['id_mascota_borrar'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div?>>
+                <div class="formulario_borrar_mascota" <?php if (isset($_POST['id_mascota_borrar'])) echo 'style=display:block;' //con esto hacemos que no aparezca al usar el "editar_usuario", ya que al seleccionar el usuario se recarga y entonces se superponen los div
+                                                        ?>>
                     <form action="" method="post">
                         <h3>BORRAR MASCOTA</h3>
                         <select name="id_mascota_borrar" onchange="this.form.submit()">
@@ -156,7 +169,7 @@
 
                                     <?php echo "ID: " . $mascota['id_mascota'] . " - " . $mascota['nombre'] . " " . $mascota['raza']; ?>
 
-                            </option>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                         <input type="submit" value="Eliminar" name="boton_eliminar_mascota" id="boton_eliminar_mascota" class="confirmar_cambios">
@@ -172,10 +185,10 @@
                 <form action="" method="post">
                     <input type="submit" value="Exportar en PDF" name="exportar_PDF" id="exportar_PDF" class="exportar_PDF">
                 </form>
+            </div>
         </div>
-    </div>
-    <script src="../assets/js/mascotas.js"></script>
-    <?php include("../includes/footerUsuario.php") ?>
+        <script src="../assets/js/mascotas.js"></script>
+        <?php include("../includes/footerUsuario.php") ?>
 </body>
 
 </html>

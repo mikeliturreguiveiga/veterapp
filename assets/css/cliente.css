@@ -23,6 +23,14 @@
     margin: 0;
 }
 
+.contenedorCabecera h3 {
+    color: rgb(44, 44, 207);
+    text-align: center;
+    border: 0;
+    padding: 1em;
+    margin: 0;
+}
+
 .contenedorPedirCita {
     background-color: rgb(44, 44, 207);
     width: 60%;

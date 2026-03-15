@@ -97,10 +97,26 @@ if (isset($_POST['añadir_mascota_cliente'])) {
     $especia_mascota_nueva = $_POST['especia_mascota_nueva'];
     $raza_mascota_nueva = $_POST['raza_mascota_nueva'];
     $fecha_nacimiento_mascota_nueva = $_POST['fecha_nacimiento_mascota_nueva'];
+    $id_dueño = $_SESSION['id'];
 
-    $consulta_insertar_mascota = "INSERT INTO mascotas (id_usuario, nombre, especie, raza, fecha_nacimiento)
+    //codigo de la subida del archivo
+    $foto_puntero = "default.jpg"; //nombre por defecto
+    
+    if (isset($_FILES['foto_animal']) && $_FILES['foto_animal']['error'] === 0) {
+        $directorio_servidor = "../assets/img/fotos-animales/";
+
+        $nombre_archivo = "mascota_" . $id_dueño . "_" . time() . "_" . $nombre_mascota_nueva . ".jpg";
+        
+        $ruta_completa_servidor = $directorio_servidor . $nombre_archivo;
+
+        if (move_uploaded_file($_FILES['foto_animal']['tmp_name'], $ruta_completa_servidor)) {
+            $foto_puntero = $nombre_archivo;
+        }
+    }
+
+    $consulta_insertar_mascota = "INSERT INTO mascotas (id_usuario, nombre, especie, raza, fecha_nacimiento, foto)
                                     VALUES ('$id_logeado', '$nombre_mascota_nueva', '$especia_mascota_nueva',
-                                    '$raza_mascota_nueva', '$fecha_nacimiento_mascota_nueva')";
+                                    '$raza_mascota_nueva', '$fecha_nacimiento_mascota_nueva', '$foto_puntero')";
 
     $resultado_insertar_mascota = $conexion->query($consulta_insertar_mascota);
     //Si ha salido bein sacamos un mensaje en pantalla

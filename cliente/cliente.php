@@ -19,6 +19,7 @@
     <div class="contenedorPantallaCompleta">
         <div class="contenedorCabecera">
             <h1>Hola <?php echo $_SESSION['usuario']; ?></h1>
+            <h3 class="fecha" id="fecha" name="fecha"></h3>
         </div>
         <div class="contenedorPedirCita">
             <img src="../assets/img/cliente/calendar.svg" alt="">
@@ -36,12 +37,12 @@
                         <?php endforeach; ?>
                     </select>
                     <input type="date" name="calendario" id="calendario">
-                        <!--   CON QUE PROFESIONAL  -->
-                        <label for="empleado_select">¿Con que profesional deseas la cita?</label>
-                        <select name="id_empleado" id="empleado_select" require>
+                    <!--   CON QUE PROFESIONAL  -->
+                    <label for="empleado_select">¿Con que profesional deseas la cita?</label>
+                    <select name="id_empleado" id="empleado_select" require>
                         <?php foreach ($array_datos_empleado as $empleado): ?>
                             <option value="<?php echo $empleado['id_empleado']; ?>">
-                                <?php  echo $empleado['nombre'] . " " . $empleado['apellidos']?>
+                                <?php echo $empleado['nombre'] . " " . $empleado['apellidos'] ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -60,15 +61,28 @@
                     <?php foreach ($array_datos_mascota as $fila): ?>
                         <h2>Nombre: <?php echo $fila['nombre'] ?></h2>
                         <h2>Especie: <?php echo $fila['especie'] ?></h2>
-                        <h2>Edad: <?php echo $edad ?></h2>
+                        <h2><?php //esto lo he tenido que cambiar y hacer el calculo aqui porque siempre me salia el edad del ultimo animal y no se porque
+                            if (!empty($fila['fecha_nacimiento'])) {
+                                $nacimiento = new DateTime($fila['fecha_nacimiento']);
+                                $hoy = new DateTime(); 
+                                $diferencia = $hoy->diff($nacimiento);
+                                echo $diferencia->y . " años"; 
+                            } else {
+                                echo "Desconocida";
+                            }
+                            ?></h2>
                     <?php endforeach; ?>
                 </div>
                 <input class="botonAñadirMascota" type="button" value="Añadir Mascota" id="botonAñadirMascota" name="botonAñadirMascota"> <!-- Este hacerlo con jquery para esconder el formulario-->
-                <form class="menuAñadirMascota" action="" method="post">
+                <form class="menuAñadirMascota" action="" method="post" enctype="multipart/form-data">
                     <input type="text" name="nombre_mascota_nueva" id="nombre_mascota_nueva" placeholder="Nombre">
                     <input type="text" name="especie_mascota_nueva" id="especie_mascota_nueva" placeholder="Especie">
                     <input type="text" name="raza_mascota_nueva" id="raza_mascota_nueva" placeholder="Raza">
                     <input type="text" name="fecha_nacimiento_mascota_nueva" id="fecha_nacimiento_mascota_nueva" placeholder="Fecha nac. año-mes-día">
+                    <div class="div_foto">
+                        <label for="">Imagen del animal (opcional):</label>
+                        <input type="file" name="foto_animal" id="foto_animal" accept="image/*">
+                    </div>
                     <div class="contenedorBotonAñadir">
                         <input class="botonAñadirAnimal" type="submit" value="Añadir" id="añadir_mascota_cliente" name="añadir_mascota_cliente">
                     </div>
