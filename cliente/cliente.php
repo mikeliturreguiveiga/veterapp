@@ -20,13 +20,14 @@
         <div class="contenedorCabecera">
             <h1>Hola <?php echo $_SESSION['usuario']; ?></h1>
             <h3 class="fecha" id="fecha" name="fecha"></h3>
+            <h3 class="clima" id="clima" name="clima"></h3>
         </div>
         <div class="contenedorPedirCita">
             <img src="../assets/img/cliente/calendar.svg" alt="">
             <h2 class="nuevaCita">Solicitar nueva cita</h2>
         </div>
         <div class="contenedorCalendario">
-            <form class="formulario_nueva_cita" action="" method="post">
+            <form class="formulario_nueva_cita" action="" method="post" id="formulario_nueva_cita">
                 <div class="contenido">
                     <label for="mascota_select">¿Para quien es la cita?</label>
                     <select name="id_mascota_nueva_cita" id="mascota_select" require>
@@ -36,7 +37,7 @@
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="date" name="calendario" id="calendario">
+                    <input type="date" name="calendario" id="calendario" min="<?php echo date('Y-m-d'); ?>">
                     <!--   CON QUE PROFESIONAL  -->
                     <label for="empleado_select">¿Con que profesional deseas la cita?</label>
                     <select name="id_empleado" id="empleado_select" require>
