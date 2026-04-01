@@ -26,7 +26,6 @@
                 <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de cliente">
                 <input type="text" name="nombre_msacota" id="nombre_mascota" placeholder="Nombre de mascota">
                 <input type="date" name="fecha" id="fecha">
-                <input type="submit" value="Buscar" name="buscar" id="buscar">
             </form>
         </div>
         <div class="contenedorPanel">
@@ -98,7 +97,7 @@
                 
                 </table>
                 <div class="formulario_nueva_cita">
-                    <form action="" method="post">
+                    <form action="" method="post" id="formulario_nueva_cita_empleado">
                         <h3>DATOS NUEVA CITA</h3>
                         <select name="id_usuario" id="select_cliente">
                             <option value="">Selecciona cliente:</option>
