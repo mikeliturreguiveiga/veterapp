@@ -94,7 +94,7 @@ if (isset($_POST['cancelar_cita'])) {
 //-----------------------------CODIGO AÑADIR NUEVA MASCOTA----------------------------
 if (isset($_POST['añadir_mascota_cliente'])) {
     $nombre_mascota_nueva = $_POST['nombre_mascota_nueva'];
-    $especia_mascota_nueva = $_POST['especia_mascota_nueva'];
+    $especie_mascota_nueva = $_POST['especie_mascota_nueva'];
     $raza_mascota_nueva = $_POST['raza_mascota_nueva'];
     $fecha_nacimiento_mascota_nueva = $_POST['fecha_nacimiento_mascota_nueva'];
     $id_dueño = $_SESSION['id'];
@@ -115,7 +115,7 @@ if (isset($_POST['añadir_mascota_cliente'])) {
     }
 
     $consulta_insertar_mascota = "INSERT INTO mascotas (id_usuario, nombre, especie, raza, fecha_nacimiento, foto)
-                                    VALUES ('$id_logeado', '$nombre_mascota_nueva', '$especia_mascota_nueva',
+                                    VALUES ('$id_logeado', '$nombre_mascota_nueva', '$especie_mascota_nueva',
                                     '$raza_mascota_nueva', '$fecha_nacimiento_mascota_nueva', '$foto_puntero')";
 
     $resultado_insertar_mascota = $conexion->query($consulta_insertar_mascota);

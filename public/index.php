@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include '/Users/mikeliturreguiveiga/Desktop/INFORMÁTICA/DAW/2º/PROYECTO INTERMODULAR/4. PROYECTO/veterApp/includes/headerUsuario.php'; ?>
+    <?php include '../includes/headerUsuario.php'; ?>
 
     <div class="presentacion">
         <h1>SERVICIOS VETERINARIOS EN TORREVIEJA</h1>
@@ -20,7 +20,6 @@
             y de amplia trayectoria está a su disposición para el mejor cuidado de sus pequeños
             compañeros.
         </p>
-        <h5>Ver a los profesionales</h5> <!-- Incluir el location a "quienes somos" -->
     </div>
 
     <!-- Desde aqui "tarjetas -->
@@ -116,7 +115,7 @@
 
     <!-- includes y script -->
      <script src="../assets/js/main.js"></script>
-    <?php include '/Users/mikeliturreguiveiga/Desktop/INFORMÁTICA/DAW/2º/PROYECTO INTERMODULAR/4. PROYECTO/veterApp/includes/footerUsuario.php'; ?>
+    <?php include '../includes/footerUsuario.php'; ?>
 </body>
 
 </html>

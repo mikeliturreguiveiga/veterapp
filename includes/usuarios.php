@@ -136,20 +136,19 @@ if (isset($_POST['boton_editar_usuario'])) {
 //------------------------------CODIGO ELIMINAR USUARIO----------------------------------
 if (isset($_POST['boton_eliminar_usuario'])) {
     $id = $_POST['id_usuario_borrar'];
-    $nom = $_POST['nombre_borrar_usuario'];
-    $ape = $_POST['apellido_borrar_usuario'];
-    $tel = $_POST['telefono_borrar_usuario'];
-    $em = $_POST['mail_borrar_usuario'];
-    $dir = $_POST['direccion_borrar_usuario'];
 
 
     if (!empty($id)) {
+        $consulta_borrar_mascota_usuario = "DELETE FROM mascotas
+                       WHERE id_usuario = '$id'";
+
         $consulta_borrar_contraseña_usuario = "DELETE FROM tipo_usuarios_contraseñas
                        WHERE id_usuario = '$id'";
 
         $consulta_borrar_datos_usurio = "DELETE FROM usuarios
                        WHERE id_usuario = '$id'";
 
+        $ejecutar_consulta_borrar_mascota = $conexion->query($consulta_borrar_mascota_usuario);
         $ejecutar_consulta_borrar_contraseña = $conexion->query($consulta_borrar_contraseña_usuario);
         $ejecutar_consulta_borrar_datos_usuario = $conexion->query($consulta_borrar_datos_usurio);
 
