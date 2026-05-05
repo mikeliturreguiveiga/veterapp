@@ -65,9 +65,9 @@
                         <h2><?php //esto lo he tenido que cambiar y hacer el calculo aqui porque siempre me salia el edad del ultimo animal y no se porque
                             if (!empty($fila['fecha_nacimiento'])) {
                                 $nacimiento = new DateTime($fila['fecha_nacimiento']);
-                                $hoy = new DateTime(); 
+                                $hoy = new DateTime();
                                 $diferencia = $hoy->diff($nacimiento);
-                                echo $diferencia->y . " años"; 
+                                echo $diferencia->y . " años";
                             } else {
                                 echo "Desconocida";
                             }

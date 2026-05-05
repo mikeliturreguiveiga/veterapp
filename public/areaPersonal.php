@@ -26,7 +26,7 @@
                     <input type="text" name="usuario" id="usuario" placeholder="Usuario">
                 </div>
                 <div class="divContraseña">
-                    <img src="../assets/img/areaPersonal/contraseña.svg" alt="">
+                    <img src="../assets/img/areaPersonal/contrasena.svg" alt="">
                     <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
                 </div>
                 <input class="botonInicioSesion" type="submit" value="Iniciar">

@@ -22,39 +22,48 @@ const fecha_formateada = dia + "/" + mes + "/" + año;
 
 document.getElementById("fecha").innerText = fecha_formateada;
 
+
 //--------------VALIDACIÓN DEL FORMULARIO DE NUEVA CITA-----------
 
-document
-  .getElementById("formulario_nueva_cita")
-  .addEventListener("submit", function (event) {
-    const fecha_calendario = document.getElementById("calendario").value;
-    const hora = document.getElementById("hora_nueva_cita").value;
+document.getElementById("formulario_nueva_cita").addEventListener("submit", function (event) {
+    const fecha_calendario = document.getElementById("calendario").value; // Formato YYYY-MM-DD
+    const hora_seleccionada = document.getElementById("hora_nueva_cita").value; // Formato HH:MM
 
     let errores = [];
 
     if (fecha_calendario === "") {
-      errores.push("Selecciona una fecha");
+        errores.push("Selecciona una fecha");
     } else {
-      const fecha_seleccionada = new Date(fecha_calendario);
+        const ahora = new Date();
+        
+        // Creamos un string de hoy en formato YYYY-MM-DD para comparar solo días
+        const hoy_formato = ahora.getFullYear() + "-" + 
+                            String(ahora.getMonth() + 1).padStart(2, '0') + "-" + 
+                            String(ahora.getDate()).padStart(2, '0');
 
-      const hoy = new Date();
+        if (fecha_calendario < hoy_formato) {
+            errores.push("La fecha seleccionada ya ha pasado");
+        } 
+        else if (fecha_calendario === hoy_formato) {
+            // SI ES HOY, validamos la hora
+            const hora_actual = String(ahora.getHours()).padStart(2, '0') + ":" + 
+                                String(ahora.getMinutes()).padStart(2, '0');
 
-      hoy.setHours(0, 0, 0, 0);
-
-      if (fecha_seleccionada < fecha) {
-        errores.push("La fecha seleccionada ya ha pasado");
-      }
+            if (hora_seleccionada !== "" && hora_seleccionada <= hora_actual) {
+                errores.push("Para hoy, la hora debe ser posterior a la actual (" + hora_actual + ")");
+            }
+        }
     }
 
-    if (hora === "") {
-      errores.push("Hora vacía");
+    if (hora_seleccionada === "") {
+        errores.push("Selecciona una hora");
     }
 
     if (errores.length > 0) {
-      event.preventDefault();
-      alert(errores.join("\n"));
+        event.preventDefault();
+        alert(errores.join("\n"));
     }
-  });
+});
 
 //--------------AJAX DEL CLIMA-----------
 

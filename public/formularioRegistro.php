@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <?php include('../includes/headerUsuario.php') ?>
+    <?php include('../includes/headerUsuario.php');
+           include('../includes/registro.php') ?>
+
+           
     <div class="contenedorRegistro">
         <div class="contenedorFormularioCompleto">
             <div class="contenedorLogoClinica">
