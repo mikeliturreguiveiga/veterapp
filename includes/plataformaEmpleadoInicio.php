@@ -1,26 +1,32 @@
 <?php
-    //------------------------------------CODIGO PAGINADO DE TABLAS----------------------------------------
-    session_start();
-    $id_empleado = $_SESSION['id'];
-    
-    $resultados_por_pagina = 5; //Defino el numero máximo de filas en la tabla
+//CODIGO SRGURIDAD PARA QUE NO ENTREN AQUI SIN ESTAR LOGEADOS
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../public/areaPersonal.php');
+    exit;
+}
+//---------------------------------------------------------
+//------------------------------------CODIGO PAGINADO DE TABLAS----------------------------------------
+session_start();
+$id_empleado = $_SESSION['id'];
 
-        //Capturo la pagina actual de la URL
-        $pagina_pasadas = isset($_GET['pp']) ? (int)$_GET['pp'] : 1;
-        $pagina_hoy = isset($_GET['ph']) ? (int)$_GET['ph'] : 1;
-        $pagina_proximas = isset($_GET['pr']) ? (int)$_GET['pr'] : 1;
+$resultados_por_pagina = 5; //Defino el numero máximo de filas en la tabla
 
-        //Calculamos el punto de inicio para el SQL
-        $inicio_pasadas = ($pagina_pasadas - 1) * $resultados_por_pagina;
-        $inicio_hoy = ($pagina_hoy - 1) * $resultados_por_pagina;
-        $inicio_proximas = ($pagina_proximas - 1) * $resultados_por_pagina;
+//Capturo la pagina actual de la URL
+$pagina_pasadas = isset($_GET['pp']) ? (int)$_GET['pp'] : 1;
+$pagina_hoy = isset($_GET['ph']) ? (int)$_GET['ph'] : 1;
+$pagina_proximas = isset($_GET['pr']) ? (int)$_GET['pr'] : 1;
+
+//Calculamos el punto de inicio para el SQL
+$inicio_pasadas = ($pagina_pasadas - 1) * $resultados_por_pagina;
+$inicio_hoy = ($pagina_hoy - 1) * $resultados_por_pagina;
+$inicio_proximas = ($pagina_proximas - 1) * $resultados_por_pagina;
 
 
 
 
-    //---------------------------CODIGO PARA LA PREVISUALIZACION DE LA AGENDA------------------------------
-        $fechaActual = date("Y-m-d");
-        $consulta = "SELECT
+//---------------------------CODIGO PARA LA PREVISUALIZACION DE LA AGENDA------------------------------
+$fechaActual = date("Y-m-d");
+$consulta = "SELECT
                     C.fecha,
                     C.hora,
                     U.nombre AS nombre_usuario,
@@ -34,45 +40,45 @@
                     INNER JOIN
                     mascotas M ON C.id_mascota = M.id_mascota ";
 
-        
-        //Separamos en diferentes arrays los datos de citas por fechas
 
-        //PARA LAS PASADAS
-        $consultaPasadas = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_pasadas";
+//Separamos en diferentes arrays los datos de citas por fechas
 
-        $resultadoConsultaPasadas = $conexion->query($consultaPasadas);
+//PARA LAS PASADAS
+$consultaPasadas = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha < '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_pasadas";
 
-        //Pasamo los datos a un array por filas
-        $agendaCitasPasadas = array();
-        while ($fila = $resultadoConsultaPasadas->fetch_assoc()) {
-            $agendaCitasPasadas[] = $fila;
-        }
+$resultadoConsultaPasadas = $conexion->query($consultaPasadas);
 
-        //PARA LAS DE HOY
-        $consultaHoy = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_hoy";
+//Pasamo los datos a un array por filas
+$agendaCitasPasadas = array();
+while ($fila = $resultadoConsultaPasadas->fetch_assoc()) {
+    $agendaCitasPasadas[] = $fila;
+}
 
-        $resultadoConsultaHoy = $conexion->query($consultaHoy);
+//PARA LAS DE HOY
+$consultaHoy = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_hoy";
 
-        //Pasamo los datos a un array por filas
-        $agendaCitasHoy = array();
-        while ($fila = $resultadoConsultaHoy->fetch_assoc()) {
-            $agendaCitasHoy[] = $fila;
-        }
+$resultadoConsultaHoy = $conexion->query($consultaHoy);
 
-        //PARA LAS PASADAS
-        $consultaProximas = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_proximas";
+//Pasamo los datos a un array por filas
+$agendaCitasHoy = array();
+while ($fila = $resultadoConsultaHoy->fetch_assoc()) {
+    $agendaCitasHoy[] = $fila;
+}
 
-        $resultadoConsultaProximas = $conexion->query($consultaProximas);
+//PARA LAS PASADAS
+$consultaProximas = $consulta . " WHERE C.id_empleado = $id_empleado AND C.fecha > '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT $resultados_por_pagina OFFSET $inicio_proximas";
 
-        //Pasamo los datos a un array por filas
-        $agendaCitasProximas = array();
-        while ($fila = $resultadoConsultaProximas->fetch_assoc()) {
-            $agendaCitasProximas[] = $fila;
-        }
+$resultadoConsultaProximas = $conexion->query($consultaProximas);
+
+//Pasamo los datos a un array por filas
+$agendaCitasProximas = array();
+while ($fila = $resultadoConsultaProximas->fetch_assoc()) {
+    $agendaCitasProximas[] = $fila;
+}
 
 
-    //---------------------------CODIGO PARA LA PREVISUALIZACION DE CLIENTES------------------------------
-        $consultaUsuariosHoy = "SELECT
+//---------------------------CODIGO PARA LA PREVISUALIZACION DE CLIENTES------------------------------
+$consultaUsuariosHoy = "SELECT
                 C.fecha,
                 U.nombre AS nombre_usuario,
                 U.apellidos AS apellido_usuario,
@@ -84,20 +90,20 @@
                 usuarios U ON C.id_usuario = U.id_usuario 
                 WHERE C.id_empleado = $id_empleado AND C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
 
-        //PARA FILTRAR SOLO LAS DE HOY
+//PARA FILTRAR SOLO LAS DE HOY
 
-        $resultadoConsultaUsuariosHoy = $conexion->query($consultaUsuariosHoy);
+$resultadoConsultaUsuariosHoy = $conexion->query($consultaUsuariosHoy);
 
-        //Pasamo los datos a un array por filas
-        $agenda_citas_usuarios_hoy = array();
-        while ($fila = $resultadoConsultaUsuariosHoy->fetch_assoc()) {
-            $agenda_citas_usuarios_hoy[] = $fila;
-        }
+//Pasamo los datos a un array por filas
+$agenda_citas_usuarios_hoy = array();
+while ($fila = $resultadoConsultaUsuariosHoy->fetch_assoc()) {
+    $agenda_citas_usuarios_hoy[] = $fila;
+}
 
 
-    //---------------------------CODIGO PARA LA PREVISUALIZACION DE MASCOTAS------------------------------
+//---------------------------CODIGO PARA LA PREVISUALIZACION DE MASCOTAS------------------------------
 
-        $consultaMascotasHoy = "SELECT
+$consultaMascotasHoy = "SELECT
                 C.fecha,
                 U.nombre AS nombre_usuario,
                 M.nombre AS nombre_mascota,
@@ -114,13 +120,12 @@
                 mascotas M ON C.id_mascota = M.id_mascota
                 WHERE C.id_empleado = $id_empleado AND C.fecha = '$fechaActual' ORDER BY C.fecha, C.hora DESC LIMIT 10";
 
-        //PARA FILTRAR SOLO LAS DE HOY
+//PARA FILTRAR SOLO LAS DE HOY
 
-        $resultadoConsultaMascotasHoy = $conexion->query($consultaMascotasHoy);
+$resultadoConsultaMascotasHoy = $conexion->query($consultaMascotasHoy);
 
-        //Pasamo los datos a un array por filas
-        $agenda_citas_mascotas_hoy = array();
-        while ($fila = $resultadoConsultaMascotasHoy->fetch_assoc()) {
-            $agenda_citas_mascotas_hoy[] = $fila;
-        }
-?>
+//Pasamo los datos a un array por filas
+$agenda_citas_mascotas_hoy = array();
+while ($fila = $resultadoConsultaMascotasHoy->fetch_assoc()) {
+    $agenda_citas_mascotas_hoy[] = $fila;
+}

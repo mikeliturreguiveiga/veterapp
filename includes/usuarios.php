@@ -1,4 +1,10 @@
 <?php
+//CODIGO SRGURIDAD PARA QUE NO ENTREN AQUI SIN ESTAR LOGEADOS
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../public/areaPersonal.php');
+    exit;
+}
+//---------------------------------------------------------
 //------------------------------------------EXPORTADO FPDF----------------------------------------
 include("../includes/fpdf/fpdf.php");
 
