@@ -1,185 +1,60 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2639
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\froman\fcharset0 Times-Bold;
-\f3\froman\fcharset0 Times-Roman;\f4\fmodern\fcharset0 Courier;\f5\fnil\fcharset0 AppleColorEmoji;
-}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
-{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
-{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
-{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
-\paperw11900\paperh16840\margl1440\margr1440\vieww24520\viewh15060\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+# VeterApp - Sistema de Gestión de Clínica Veterinaria
 
-\f0\fs24 \cf0 # VeterApp - Sistema de Gesti\'f3n de Cl\'ednica Veterinaria\
-\
-VeterApp es una soluci\'f3n integral para la gesti\'f3n de servicios veterinarios. La plataforma permite la administraci\'f3n de citas, historiales cl\'ednicos de mascotas y el control de acceso diferenciado para clientes y empleados, optimizando la operativa diaria de la cl\'ednica.\
-\
-## Estructura del Proyecto\
-\
-El proyecto est\'e1 organizado siguiendo una estructura de directorios l\'f3gica para separar los recursos est\'e1ticos de la l\'f3gica de servidor:\
-```text\
-/\
+VeterApp es una solución integral para la gestión de servicios veterinarios. La plataforma permite la administración de citas, historiales clínicos de mascotas y el control de acceso diferenciado para clientes y empleados, optimizando la operativa diaria de la clínica.
 
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  index.php                 # Punto de entrada principal (Redirecci\'f3n a Public)\
+## Estructura del Proyecto
 
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  assets/                   # Recursos est\'e1ticos\
-\uc0\u9474    
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  css/                  # Estilos generales de la web\
-\uc0\u9474    
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  omg/                  # Im\'e1genes y recursos gr\'e1ficos\
-\uc0\u9474    \u9492 \u9472 \u9472  js/                   # L\'f3gica de cliente (agenda.js, usuarios.js, mascotas.js)\
+El proyecto está organizado siguiendo una estructura de directorios lógica para separar los recursos estáticos de la lógica de servidor:
+```text
+/
+├── index.php                 # Punto de entrada principal (Redirección a Public)
+├── assets/                   # Recursos estáticos
+│   ├── css/                  # Estilos generales de la web
+│   ├── omg/                  # Imágenes y recursos gráficos
+│   └── js/                   # Lógica de cliente (agenda.js, usuarios.js, mascotas.js)
+├── cliente/                  # Área privada para clientes (cliente.php)
+├── empleado/                 # Panel de administración y lógica de negocio
+│   ├── conexion.php          # Configuración de conexión a la BD
+│   ├── login.php             # Motor de autenticación y sesiones
+│   └── consigue_mascota.php  # API para carga dinámica de datos (JSON)
+├── includes/                 # Librerías externas (FPDF)
+└── public/                   # Web corporativa y acceso público (Adopta, Registro, etc.)
 
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  cliente/                  # \'c1rea privada para clientes (cliente.php)\
 
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  empleado/                 # Panel de administraci\'f3n y l\'f3gica de negocio\
-\uc0\u9474    
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  conexion.php          # Configuraci\'f3n de conexi\'f3n a la BD\
-\uc0\u9474    
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  login.php             # Motor de autenticaci\'f3n y sesiones\
-\uc0\u9474    \u9492 \u9472 \u9472  consigue_mascota.php  # API para carga din\'e1mica de datos (JSON)\
+Tecnologías y Requisitos
+	•	Servidor: Apache (Configurado para permitir DirectoryIndex y gestión de sesiones).
+	•	Lenguaje: PHP 8.0+ (Soporte para mysqli y búferes de salida ob_start).
+	•	Base de Datos: MySQL (MariaDB) gestionada mediante phpMyAdmin.
+	•	Frontend: JavaScript Nativo (Validaciones en cliente.js y filtrado dinámico en agenda.js).
+	•	Informes: Librería FPDF para exportación de datos.
+Modelo de Datos (VeterApp)
+La base de datos se fundamenta en 5 tablas interconectadas para garantizar la integridad referencial:
+	•	usuarios / empleados: Almacenan los datos personales de cada perfil.
+	•	mascotas: Contiene el historial clínico detallado (vacunas, tratamientos, dieta).
+	•	citas: Gestiona la agenda vinculando usuario, empleado y mascota.
+	•	tipos_usuarios_contraseñas: Tabla de seguridad que centraliza las credenciales de acceso.
 
-\f1 \'a9\'c0
-\f0 \uc0\u9472 \u9472  includes/                 # Librer\'edas externas (FPDF)\
-\uc0\u9492 \u9472 \u9472  public/                   # Web corporativa y acceso p\'fablico (Adopta, Registro, etc.)\
-\
-\
-\pard\pardeftab720\sa298\partightenfactor0
+Funcionalidades Destacadas
+ Gestión de Acceso
+El sistema utiliza un Login con roles. Dependiendo de las credenciales, el usuario es redirigido automáticamente a su panel correspondiente (/cliente o /empleado).
+ Gestión de Mascotas (API Interna)
+El archivo consigue_mascota.php actúa como un endpoint. Recibe un id_usuario y devuelve un objeto JSON con las mascotas asociadas, permitiendo que la interfaz se actualice sin recargar la página.
+ Agenda y Filtrado
+Se ha implementado lógica avanzada en agenda.js para permitir el filtrado de tablas por campos específicos, mejorando la usabilidad del personal administrativo.
+ Registro y Área Pública
+Los nuevos usuarios pueden darse de alta a través de formularioRegistro.php dentro de la carpeta /public, integrándose automáticamente en el sistema para comenzar a solicitar citas.
+ Configuración del Servidor Apache
+Para el correcto despliegue en local (XAMPP/MAMP), se recomienda la siguiente configuración en el archivo de hosts o configuración de Apache:
 
-\f2\b\fs36 \cf0 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Tecnolog\'edas y Requisitos\
-\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
-\ls1\ilvl0
-\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Servidor:
-\f3\b0  Apache (Configurado para permitir 
-\f4\fs26 DirectoryIndex
-\f3\fs24  y gesti\'f3n de sesiones).\
-\ls1\ilvl0
-\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Lenguaje:
-\f3\b0  PHP 8.0+ (Soporte para 
-\f4\fs26 mysqli
-\f3\fs24  y b\'faferes de salida 
-\f4\fs26 ob_start
-\f3\fs24 ).\
-\ls1\ilvl0
-\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Base de Datos:
-\f3\b0  MySQL (MariaDB) gestionada mediante phpMyAdmin.\
-\ls1\ilvl0
-\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Frontend:
-\f3\b0  JavaScript Nativo (Validaciones en 
-\f4\fs26 cliente.js
-\f3\fs24  y filtrado din\'e1mico en 
-\f4\fs26 agenda.js
-\f3\fs24 ).\
-\ls1\ilvl0
-\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Informes:
-\f3\b0  Librer\'eda FPDF para exportaci\'f3n de datos.\
-\pard\pardeftab720\sa298\partightenfactor0
+# Configuración del Directorio Raíz
+<Directory "/Applications/XAMPP/htdocs/veterapp">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    # Asegura que las sesiones persistan correctamente
+    php_value session.gc_maxlifetime 3600
+</Directory>
 
-\f2\b\fs36 \cf0 Modelo de Datos (VeterApp)\
-\pard\pardeftab720\sa240\partightenfactor0
 
-\f3\b0\fs24 \cf0 La base de datos se fundamenta en 5 tablas interconectadas para garantizar la integridad referencial:\
-\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
-\ls2\ilvl0
-\f2\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 usuarios / empleados:
-\f3\b0  Almacenan los datos personales de cada perfil.\
-\ls2\ilvl0
-\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 mascotas:
-\f3\b0  Contiene el historial cl\'ednico detallado (vacunas, tratamientos, dieta).\
-\ls2\ilvl0
-\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 citas:
-\f3\b0  Gestiona la agenda vinculando usuario, empleado y mascota.\
-\ls2\ilvl0
-\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 tipos_usuarios_contrase\'f1as:
-\f3\b0  Tabla de seguridad que centraliza las credenciales de acceso.\
-\pard\pardeftab720\sa298\partightenfactor0
 
-\f5\fs36 \cf0 \
-
-\f2\b Funcionalidades Destacadas\
-\pard\pardeftab720\sa280\partightenfactor0
-
-\fs28 \cf0  Gesti\'f3n de Acceso\
-\pard\pardeftab720\sa240\partightenfactor0
-
-\f3\b0\fs24 \cf0 El sistema utiliza un 
-\f2\b Login con roles
-\f3\b0 . Dependiendo de las credenciales, el usuario es redirigido autom\'e1ticamente a su panel correspondiente (
-\f4\fs26 /cliente
-\f3\fs24  o 
-\f4\fs26 /empleado
-\f3\fs24 ).\
-\pard\pardeftab720\sa280\partightenfactor0
-
-\f2\b\fs28 \cf0  Gesti\'f3n de Mascotas (API Interna)\
-\pard\pardeftab720\sa240\partightenfactor0
-
-\f3\b0\fs24 \cf0 El archivo 
-\f4\fs26 consigue_mascota.php
-\f3\fs24  act\'faa como un endpoint. Recibe un 
-\f4\fs26 id_usuario
-\f3\fs24  y devuelve un objeto 
-\f2\b JSON
-\f3\b0  con las mascotas asociadas, permitiendo que la interfaz se actualice sin recargar la p\'e1gina.\
-\pard\pardeftab720\sa280\partightenfactor0
-
-\f2\b\fs28 \cf0  Agenda y Filtrado\
-\pard\pardeftab720\sa240\partightenfactor0
-
-\f3\b0\fs24 \cf0 Se ha implementado l\'f3gica avanzada en 
-\f4\fs26 agenda.js
-\f3\fs24  para permitir el filtrado de tablas por campos espec\'edficos, mejorando la usabilidad del personal administrativo.\
-\pard\pardeftab720\sa280\partightenfactor0
-
-\f2\b\fs28 \cf0  Registro y \'c1rea P\'fablica\
-\pard\pardeftab720\sa240\partightenfactor0
-
-\f3\b0\fs24 \cf0 Los nuevos usuarios pueden darse de alta a trav\'e9s de 
-\f4\fs26 formularioRegistro.php
-\f3\fs24  dentro de la carpeta 
-\f4\fs26 /public
-\f3\fs24 , integr\'e1ndose autom\'e1ticamente en el sistema para comenzar a solicitar citas.\
-\pard\pardeftab720\sa298\partightenfactor0
-
-\f2\b\fs36 \cf0  Configuraci\'f3n del Servidor Apache\
-\pard\pardeftab720\sa240\partightenfactor0
-
-\f3\b0\fs24 \cf0 Para el correcto despliegue en local (XAMPP/MAMP), se recomienda la siguiente configuraci\'f3n en el archivo de hosts o configuraci\'f3n de Apache:\
-\
-# Configuraci\'f3n del Directorio Ra\'edz\
-<Directory "/Applications/XAMPP/htdocs/veterapp">\
-    Options Indexes FollowSymLinks\
-    AllowOverride All\
-    Require all granted\
-    # Asegura que las sesiones persistan correctamente\
-    php_value session.gc_maxlifetime 3600\
-</Directory>\
-\
-\
-\
-\pard\pardeftab720\partightenfactor0
-
-\f2\b \cf0 \strokec2 Nota t\'e9cnica:
-\f3\b0  Se ha incluido un 
-\f4\fs26 index.php
-\f3\fs24  en la ra\'edz con un 
-\f4\fs26 header("Location: public/index.php")
-\f3\fs24  para facilitar la navegaci\'f3n del usuario final sin necesidad de introducir rutas manuales en la URL.\
-}
+Nota técnica: Se ha incluido un index.php en la raíz con un header("Location: public/index.php") para facilitar la navegación del usuario final sin necesidad de introducir rutas manuales en la URL.
