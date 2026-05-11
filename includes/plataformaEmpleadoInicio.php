@@ -1,10 +1,5 @@
 <?php
-//CODIGO SRGURIDAD PARA QUE NO ENTREN AQUI SIN ESTAR LOGEADOS
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../public/areaPersonal.php');
-    exit;
-}
-//---------------------------------------------------------
+
 //------------------------------------CODIGO PAGINADO DE TABLAS----------------------------------------
 session_start();
 $id_empleado = $_SESSION['id'];
