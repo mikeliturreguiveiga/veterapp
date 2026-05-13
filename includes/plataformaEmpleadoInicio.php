@@ -1,7 +1,12 @@
 <?php
-
-//------------------------------------CODIGO PAGINADO DE TABLAS----------------------------------------
+//CODIGO SRGURIDAD PARA QUE NO ENTREN AQUI SIN ESTAR LOGEADOS
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../public/areaPersonal.php');
+    exit;
+}
+//------------------------------------CODIGO PAGINADO DE TABLAS----------------------------------------
+
 $id_empleado = $_SESSION['id'];
 
 $resultados_por_pagina = 5; //Defino el numero máximo de filas en la tabla
